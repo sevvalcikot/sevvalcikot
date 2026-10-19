@@ -1,0 +1,21 @@
+Kullanılan Şablon (Template) / Template Source
+================================================
+
+Şablon adı : vCard - Personal Portfolio
+Geliştirici: codewithsadee
+Kaynak     : https://github.com/codewithsadee/vcard-personal-portfolio
+Lisans     : MIT
+
+Şablon üzerinde yapılan değişiklikler:
+- Tek sayfalık (sekmeli) yapı; Anasayfa, Hakkımda, Projeler, Galeri ve İletişim
+  olmak üzere ayrı HTML sayfalarına bölündü.
+- Mobilde altta duran menü (header), tüm ekran boyutlarında üstte sabit duracak şekilde
+  yeniden tasarlandı; mobil için açılır menü eklendi.
+- Sarı vurgu renkleri beyaz olarak değiştirildi.
+- Türkçe (kök klasör) ve İngilizce (/en klasörü) sürümler eklendi.
+- Ders programı tablosu, sıralı/sırasız listeler, abbr/code/pre/blockquote, galeri,
+  büyütme (lightbox) penceresi ve iletişim formu eklendi.
+
+Diğer kaynaklar:
+- Yazı tipi: Poppins (Google Fonts) - https://fonts.google.com/specimen/Poppins
+- İkonlar  : Ionicons 5.5.2 - https://ionic.io/ionicons
