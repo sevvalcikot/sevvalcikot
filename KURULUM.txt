@@ -1,0 +1,49 @@
+KİŞİSEL ASİSTAN + CMS KURULUMU (yaklaşık 10 dakika)
+====================================================
+
+Panel adresi: siten/panel.html   (ör. https://sevvalcikot.vercel.app/panel.html)
+
+Supabase kurulmadan da panel "Demo modu"nda çalışır; ama o zaman
+veriler sadece o tarayıcıda kalır ve hoca göremez. Online kayıt için:
+
+1) SUPABASE HESABI VE PROJE
+   - supabase.com → Start your project → GitHub ile giriş yap (ücretsiz plan).
+   - New project → Name: sevvalcikot → bir Database Password belirle
+     (bir yere not et) → Region: Central EU (Frankfurt) → Create.
+   - Projenin hazırlanmasını 1-2 dakika bekle.
+
+2) VERİTABANI TABLOLARI
+   - Soldan "SQL Editor" → "New query".
+   - Bu klasördeki supabase-kurulum.sql dosyasını aç, TAMAMINI kopyala, yapıştır → "Run".
+   - "Success. No rows returned" görmelisin.
+
+3) PANEL KULLANICISI (sen ve hocan bu bilgiyle girersiniz)
+   - Soldan "Authentication" → "Users" → "Add user" → "Create new user".
+   - E-posta ve şifre yaz, "Auto Confirm User" kutusunu İŞARETLE → Create user.
+   - Bu e-posta ve şifreyi proje raporuna yaz (vize formu bunu istiyor).
+
+4) BAŞKALARININ KAYIT OLMASINI KAPAT  (önemli!)
+   - "Authentication" → "Sign In / Providers" (ya da "Providers" → "Email").
+   - "Allow new users to sign up" seçeneğini KAPAT → Save.
+   Böylece panele yalnızca 3. adımda oluşturduğun hesap girebilir.
+
+5) ANAHTARLARI SİTEYE YAZ
+   - "Project Settings" → "Data API" / "API Keys" sayfası.
+   - "Project URL" ve "anon public" (ya da "publishable") anahtarını kopyala.
+   - VS Code'da assets/js/config.js dosyasını aç, iki tırnağın arasına yapıştır:
+         supabaseUrl: "https://xxxx.supabase.co",
+         supabaseKey: "eyJ... ya da sb_publishable_...",
+   - "service_role" / "secret" anahtarını ASLA bu dosyaya yazma.
+   - Kaydet → Source Control → Commit → Sync Changes. Vercel siteyi günceller.
+
+6) DENE
+   - siten/panel.html adresine git, 3. adımdaki e-posta/şifre ile giriş yap.
+   - Sol altta "Supabase bağlı" yazmalı.
+   - "Projeler"de bir başlığı değiştir → "Kaydet ve yayınla" → siteyi yenile.
+
+Panelde neler var?
+  Kişisel asistan : Bugün (özet, dersler, sınav geri sayımı), Takvim, Görevler,
+                    Notlar, Odak (pomodoro), Asistan (sohbet: "yarın neyim var?",
+                    "cuma 14:00 matematik sınavı ekle", "görev ekle: ...").
+  Site içeriği    : Projeler, Galeri (fotoğraf yükleme), Hakkımda, Yetenekler ve
+                    ilgi alanları, Söz. Kaydedince site anında güncellenir.

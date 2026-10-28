@@ -1,0 +1,303 @@
+{
+ "projects": [
+  {
+   "id": "p1",
+   "title": {
+    "tr": "Image Stack",
+    "en": "Image Stack"
+   },
+   "desc": {
+    "tr": "Akdeniz Üniversitesi tramvay durağında aynı açıdan çektiğim çok sayıda fotoğrafı Image Stack (Görüntü Yığını) yöntemiyle birleştirdim; böylece karedeki hareketli nesneleri ve gürültüyü temizleyerek tek, temiz bir görüntü elde ettim.",
+    "en": "I combined many photos taken from the same angle at the Akdeniz University tram stop using the Image Stack technique, removing moving objects and noise to get a single clean image."
+   },
+   "cat": "photo",
+   "img": "projeler/proje1-sonrasi.jpg",
+   "img2": "projeler/proje1-oncesi.jpg",
+   "pair": "before"
+  },
+  {
+   "id": "p2",
+   "title": {
+    "tr": "History Brush",
+    "en": "History Brush"
+   },
+   "desc": {
+    "tr": "Fotoğrafı siyah-beyaza çevirdikten sonra History Brush (Geçmiş Fırçası) aracıyla yalnızca köpeğin ve yeşil yeleğinin rengini geri getirerek konuyu arka plandan ayırıp öne çıkardım.",
+    "en": "After converting the photo to black and white, I used the History Brush to bring back colour only on the dog and its green vest, making the subject stand out from the background."
+   },
+   "cat": "photo",
+   "img": "projeler/proje2-sonrasi.jpg",
+   "img2": "projeler/proje2-oncesi.jpg",
+   "pair": "before"
+  },
+  {
+   "id": "p3",
+   "title": {
+    "tr": "Ürün Tanıtımı",
+    "en": "Product Promotion"
+   },
+   "desc": {
+    "tr": "Bir telefon kılıfını arka planından ayırıp yansıma efekti, renk uyumu ve tipografiyle \"Three in One Phone Case\" ürün tanıtım afişine dönüştürdüm.",
+    "en": "I cut a phone case out of its background and turned it into a \"Three in One Phone Case\" product poster using a reflection effect, colour harmony and typography."
+   },
+   "cat": "design",
+   "img": "projeler/proje3-sonrasi.jpg",
+   "img2": "projeler/proje3-oncesi.jpg",
+   "pair": "before"
+  },
+  {
+   "id": "p4",
+   "title": {
+    "tr": "Karakalem Renklendirme",
+    "en": "Pencil Sketch Colouring"
+   },
+   "desc": {
+    "tr": "Siyah-beyaz bir karakalem karakter çizimini katmanlar, karışım modları ve fırça araçlarıyla renklendirerek çizimin gölge ve dokusunu koruyan canlı bir görsele dönüştürdüm.",
+    "en": "I coloured a black-and-white pencil character sketch with layers, blend modes and brushes, turning it into a vivid image that keeps the drawing's shading and texture."
+   },
+   "cat": "photo",
+   "img": "projeler/proje4-sonrasi.jpg",
+   "img2": "projeler/proje4-oncesi.jpg",
+   "pair": "before"
+  },
+  {
+   "id": "p5",
+   "title": {
+    "tr": "Smart Object",
+    "en": "Smart Object"
+   },
+   "desc": {
+    "tr": "Yıldız desenlerini Smart Object (Akıllı Nesne) olarak kalem kutusunun üzerine yerleştirdim; akıllı nesne sayesinde desenler kalite kaybı olmadan ölçeklenip döndürülebiliyor ve tekrar düzenlenebiliyor.",
+    "en": "I placed star patterns on a pencil case as Smart Objects, so they can be scaled, rotated and edited again without losing quality."
+   },
+   "cat": "design",
+   "img": "projeler/proje5.jpg",
+   "img2": "projeler/proje5-katmanlar-ss.jpg",
+   "pair": "layers"
+  },
+  {
+   "id": "p6",
+   "title": {
+    "tr": "Web Arayüzü Hazırlama",
+    "en": "Web Interface Design"
+   },
+   "desc": {
+    "tr": "Bir banka web sitesinin anasayfa arayüzünü Photoshop'ta katmanlar, gruplar ve Layer Comps (Katman Kompozisyonları) kullanarak baştan tasarladım.",
+    "en": "I recreated the homepage interface of a bank website in Photoshop using layers, groups and Layer Comps."
+   },
+   "cat": "web",
+   "img": "projeler/proje6-sonrasi.jpg",
+   "img2": "projeler/proje6-katmanlar-ss.jpg",
+   "pair": "layers"
+  }
+ ],
+ "gallery": [
+  {
+   "id": "g1",
+   "img": "galeri/bayburt.jpg",
+   "title": {
+    "tr": "Memleketim Bayburt",
+    "en": "My hometown, Bayburt"
+   },
+   "pos": "center"
+  },
+  {
+   "id": "g2",
+   "img": "galeri/ortaokul.jpg",
+   "title": {
+    "tr": "Okuduğum ortaokul",
+    "en": "The middle school I attended"
+   },
+   "pos": "center"
+  },
+  {
+   "id": "g3",
+   "img": "galeri/lise.jpg",
+   "title": {
+    "tr": "Okuduğum lise",
+    "en": "The high school I attended"
+   },
+   "pos": "center"
+  },
+  {
+   "id": "g4",
+   "img": "galeri/universite.jpg",
+   "title": {
+    "tr": "Okuduğum üniversite",
+    "en": "The university I attend"
+   },
+   "pos": "center 40%"
+  }
+ ],
+ "about": {
+  "tr": [
+   "Merhaba! Ben <strong>Şevval Çikot</strong>. 2025 yılından bu yana Akdeniz Üniversitesi'nde Bilgisayar Programcılığı okuyorum.",
+   "Liseyi Bayburt Rekabet Kurumu Kız Anadolu Lisesi'nde tamamladım. Teknolojiye olan merakım beni bu bölüme yönlendirdi; şu anda yapay zekâ üzerinde kendimi geliştiriyorum.",
+   "Boş zamanlarımda yazı yazmayı, kitap okumayı ve psikoloji üzerine okumalar yapmayı seviyorum. Yüzmek ve badminton oynamak beni dinlendiriyor; film, dizi ve oyunlar ise hem eğlence hem de ilham kaynağım.",
+   "Bu web sitesi, öğrendiklerimi bir araya getirdiğim ve gelişimimi paylaştığım kişisel alanım.",
+   "Web tarafında <abbr title=\"HyperText Markup Language\">HTML</abbr> ve <abbr title=\"Cascading Style Sheets\">CSS</abbr> öğreniyorum; programlama tarafında ise <abbr title=\"C Sharp\">C#</abbr> ile ilk adımlarımı atıyorum."
+  ],
+  "en": [
+   "Hi! I'm <strong>Şevval Çikot</strong>. I have been studying Computer Programming at Akdeniz University since 2025.",
+   "I graduated from Bayburt Rekabet Kurumu Girls' Anatolian High School. My curiosity about technology led me to this field, and I am currently improving myself in artificial intelligence.",
+   "In my free time I love writing, reading books and reading about psychology. Swimming and playing badminton help me relax, while films, TV series and games are both entertainment and a source of inspiration for me.",
+   "This website is my personal space where I bring together what I learn and share my progress.",
+   "On the web side I am learning <abbr title=\"HyperText Markup Language\">HTML</abbr> and <abbr title=\"Cascading Style Sheets\">CSS</abbr>, and in programming I am taking my first steps with <abbr title=\"C Sharp\">C#</abbr>."
+  ]
+ },
+ "interests": {
+  "tr": [
+   "Yazı yazmak",
+   "Psikoloji",
+   "Yüzmek",
+   "Badminton oynamak",
+   "Film ve dizi izlemek",
+   "Kitap okumak",
+   "Oyun oynamak"
+  ],
+  "en": [
+   "Writing",
+   "Psychology",
+   "Swimming",
+   "Playing badminton",
+   "Watching films and TV series",
+   "Reading books",
+   "Playing games"
+  ]
+ },
+ "skills": [
+  {
+   "name": "Adobe Photoshop",
+   "value": 60
+  },
+  {
+   "name": "HTML",
+   "value": 30
+  },
+  {
+   "name": "CSS",
+   "value": 20
+  },
+  {
+   "name": "C#",
+   "value": 10
+  }
+ ],
+ "quote": {
+  "text": {
+   "tr": "Ders alınmış başarısızlık, aslında bir başarıdır.",
+   "en": "A failure you have learned from is, in fact, a success."
+  },
+  "cite": "Edwin Land"
+ },
+ "schedule": [
+  {
+   "day": 0,
+   "start": "10:30",
+   "end": "12:20",
+   "name": "İnternet Programcılığı I",
+   "name_en": "Internet Programming I",
+   "code": "MBIL 203",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 0,
+   "start": "13:30",
+   "end": "15:20",
+   "name": "İnternet Programcılığı I",
+   "name_en": "Internet Programming I",
+   "code": "MBIL 203",
+   "room": "Lab (L23)"
+  },
+  {
+   "day": 1,
+   "start": "08:30",
+   "end": "10:20",
+   "name": "Bilgisayar Donanımı",
+   "name_en": "Computer Hardware",
+   "code": "MBIL 209",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 1,
+   "start": "10:30",
+   "end": "12:20",
+   "name": "Yazılım Mimarileri",
+   "name_en": "Software Architectures",
+   "code": "MBIL 207",
+   "room": "Lab (L23)"
+  },
+  {
+   "day": 1,
+   "start": "13:30",
+   "end": "15:20",
+   "name": "Görsel Programlama I",
+   "name_en": "Visual Programming I",
+   "code": "MBIL 201",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 1,
+   "start": "15:30",
+   "end": "17:20",
+   "name": "Görsel Programlama I",
+   "name_en": "Visual Programming I",
+   "code": "MBIL 201",
+   "room": "Lab (L23)"
+  },
+  {
+   "day": 2,
+   "start": "08:30",
+   "end": "10:20",
+   "name": "Multimedya Uygulamaları",
+   "name_en": "Multimedia Applications",
+   "code": "MBIL 213",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 2,
+   "start": "10:30",
+   "end": "12:20",
+   "name": "İçerik Yönetim Sistemleri",
+   "name_en": "Content Management Systems",
+   "code": "MBIL 215",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 2,
+   "start": "13:30",
+   "end": "15:20",
+   "name": "Sistem Analiz ve Tasarımı I",
+   "name_en": "System Analysis and Design I",
+   "code": "MBIL 211",
+   "room": "Lab (L23)"
+  },
+  {
+   "day": 3,
+   "start": "08:30",
+   "end": "10:20",
+   "name": "Grafik Animasyon I",
+   "name_en": "Graphic Animation I",
+   "code": "MBIL 105",
+   "room": "Lab (L23)"
+  },
+  {
+   "day": 3,
+   "start": "10:30",
+   "end": "12:20",
+   "name": "Grafik Animasyon I",
+   "name_en": "Graphic Animation I",
+   "code": "MBIL 105",
+   "room": "Derslik 303"
+  },
+  {
+   "day": 4,
+   "start": "08:30",
+   "end": "12:20",
+   "name": "Nesne Tabanlı Programlama I",
+   "name_en": "Object-Oriented Programming I",
+   "code": "MBIL 205",
+   "room": "Lab (L23)"
+  }
+ ]
+}

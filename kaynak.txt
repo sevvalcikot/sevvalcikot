@@ -1,21 +1,30 @@
-Kullanılan Şablon (Template) / Template Source
-================================================
+Tasarım kaynağı / Design source
+===============================
 
-Şablon adı : vCard - Personal Portfolio
-Geliştirici: codewithsadee
-Kaynak     : https://github.com/codewithsadee/vcard-personal-portfolio
-Lisans     : MIT
+Bu sitede hazır bir template kullanılmamıştır; tasarım özeldir (custom).
 
-Şablon üzerinde yapılan değişiklikler:
-- Tek sayfalık (sekmeli) yapı; Anasayfa, Hakkımda, Projeler, Galeri ve İletişim
-  olmak üzere ayrı HTML sayfalarına bölündü.
-- Mobilde altta duran menü (header), tüm ekran boyutlarında üstte sabit duracak şekilde
-  yeniden tasarlandı; mobil için açılır menü eklendi.
-- Sarı vurgu renkleri beyaz olarak değiştirildi.
-- Türkçe (kök klasör) ve İngilizce (/en klasörü) sürümler eklendi.
-- Ders programı tablosu, sıralı/sırasız listeler, abbr/code/pre/blockquote, galeri,
-  büyütme (lightbox) penceresi ve iletişim formu eklendi.
+Konsept: "Akdeniz'e dalış". Sayfayı kaydırmak denize dalmak demektir:
+yüzeyde (0 m) yarısı suya batmış bir başlık, derinleştikçe koyulaşan deniz,
+derinlik ve sıcaklık göstergesi, kostik ışık desenleri, yükselen kabarcıklar,
+imleçten kaçan bir balık sürüsü, derinlerde el feneri gibi çalışan imleç ve
+deniz tabanında (40 m) yosunlar arasında "şişeye mesaj" iletişim formu.
+
+İlham alınan kaynaklar (yalnızca fikir; kod ve görünüm yeniden yazıldı):
+- erat_medya Instagram videosu (https://www.instagram.com/reel/DeZ0hm8M2Z9/):
+  kaydırmaya bağlı anlatım, cam paneller, ortalanmış oval menü.
+- Jungik Lee — Interaction Library (https://library.jjangik.kr):
+  imleci izleyen önizleme, sürükle-fırlat şerit, imlecin ittiği galeri, özel imleç.
+
+Site, yapay zekâ (Claude) desteğiyle HTML5, CSS3 ve JavaScript (canvas, SVG filtreleri)
+kullanılarak hazırlanmıştır.
+
+Yönetim paneli (CMS) + kişisel asistan: panel.html
+- İçerik yönetimi: projeler, galeri (fotoğraf yükleme), hakkımda, yetenekler, ilgi alanları, söz.
+- Kişisel asistan / ajanda: bugün özeti, takvim, görevler, notlar, odak sayacı (pomodoro),
+  Türkçe komut anlayan asistan ("yarın neyim var?", "cuma 14:00 vize ekle").
+- Veritabanı ve giriş: Supabase (https://supabase.com) — supabase-js 2.97.0.
+  Kurulum adımları: KURULUM.txt, tablo ve güvenlik kuralları: supabase-kurulum.sql.
 
 Diğer kaynaklar:
-- Yazı tipi: Poppins (Google Fonts) - https://fonts.google.com/specimen/Poppins
-- İkonlar  : Ionicons 5.5.2 - https://ionic.io/ionicons
+- Yazı tipleri: Fraunces ve Manrope (Google Fonts)
+- Tüm fotoğraflar ve proje görselleri Şevval Çikot'a aittir.

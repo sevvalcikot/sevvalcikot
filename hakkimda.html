@@ -1,299 +1,167 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hakkımda | Şevval Çikot</title>
   <meta name="description" content="Şevval Çikot hakkında: özgeçmiş, eğitim, ders programı, ilgi alanları ve yetenekler.">
   <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#0b5b7c">
   <link rel="alternate" hreflang="en" href="en/about.html">
-
-  <link rel="shortcut icon" href="assets/images/logo.ico" type="image/x-icon">
-  <link rel="stylesheet" href="assets/css/style.css">
-
+  <link rel="icon" href="assets/images/avatar.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<body class="inner-page" data-depth="0.12" data-span="0.25">
 
-<body>
+  <div class="sea" aria-hidden="true"></div>
+  <canvas class="caustics" aria-hidden="true"></canvas>
+  <div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <canvas class="fx" aria-hidden="true"></canvas>
+  <div class="torch" aria-hidden="true"></div>
+  <div class="depthbar" aria-hidden="true"></div>
+  <div class="gauge" aria-hidden="true">
+    <div class="gauge-track"><span class="gauge-dot"></span></div>
+    <div class="gauge-read"><span>Derinlik</span><b data-meter>5 m</b><span data-temp>23,0 °C</span></div>
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="water" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="3" result="n">
+        <animate attributeName="baseFrequency" dur="9s" values="0.012 0.05;0.016 0.07;0.012 0.05" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div class="curtain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em></em></span></div>
 
-  <!-- #HEADER (üstte / top) -->
   <header class="site-header">
-    <div class="header-inner">
-
-      <a href="index.html" class="brand">Şevval Çikot</a>
-
-      <div class="header-actions">
-        <a href="en/about.html" class="lang-switch" hreflang="en" title="Switch to English">EN</a>
-
-        <button class="nav-toggle-btn" aria-label="Menüyü aç/kapat" aria-expanded="false" data-nav-toggle>
-          <ion-icon name="menu-outline" class="open-icon"></ion-icon>
-          <ion-icon name="close-outline" class="close-icon"></ion-icon>
-        </button>
+    <div class="nav-pill">
+      <a href="index.html" class="brand"><img src="assets/images/avatar.jpg" alt="">Şevval Çikot</a>
+      <nav class="nav-links" aria-label="Menü"><a href="index.html">Anasayfa</a><a href="hakkimda.html" aria-current="page">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="iletisim.html">İletişim</a></nav>
+      <div class="nav-end">
+        <a href="en/about.html" class="lang" hreflang="en" title="Switch to English">EN</a>
+        <button class="menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
       </div>
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-          <li class="navbar-item"><a href="index.html" class="navbar-link">Anasayfa</a></li>
-          <li class="navbar-item"><a href="hakkimda.html" class="navbar-link active" aria-current="page">Hakkımda</a></li>
-          <li class="navbar-item"><a href="projeler.html" class="navbar-link">Projeler</a></li>
-          <li class="navbar-item"><a href="galeri.html" class="navbar-link">Galeri</a></li>
-          <li class="navbar-item"><a href="iletisim.html" class="navbar-link">İletişim</a></li>
-        </ul>
-      </nav>
-
     </div>
+    <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Anasayfa</a><a href="hakkimda.html" aria-current="page">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="iletisim.html">İletişim</a></nav>
   </header>
 
   <main>
 
-    <!-- #SIDEBAR -->
-    <aside class="sidebar" data-sidebar>
+    <section class="page-hero wrap">
+      <span class="depth-tag">5 m · Hakkımda</span>
+      <h1 class="display">Merhaba, ben Şevval.</h1>
+      <p class="lead">Bilgisayar Programcılığı öğrencisiyim; teknolojiye olan merakımı her gün biraz daha büyütüyorum.</p>
+    </section>
 
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="assets/images/avatar.jpg" alt="Şevval Çikot" width="80">
-        </figure>
-
-        <div class="info-content">
-          <p class="name" title="Şevval Çikot">Şevval Çikot</p>
-          <p class="title">Bilgisayar Programcılığı Öğrencisi</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>İletişim Bilgileri</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">E-posta</p>
-              <a href="mailto:cikot.sevval1@gmail.com" class="contact-link">cikot.sevval1@gmail.com</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Telefon</p>
-              <a href="tel:+905453133135" class="contact-link">0545 313 31 35</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Doğum Tarihi</p>
-              <time datetime="2005-11-06">6 Kasım 2005</time>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Konum</p>
-              <address>Bayburt, Türkiye</address>
-            </div>
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-          <li class="social-item"><a href="https://github.com/sevvalcikot" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a></li>
-        </ul>
-
-      </div>
-
-    </aside>
-
-    <div class="main-content">
-
-      <article class="about resume">
-
-        <header>
-          <h1 class="h2 article-title">Hakkımda</h1>
-        </header>
-
-        <section class="about-intro">
-          <figure class="id-photo">
-            <img src="assets/images/vesikalik.jpg" alt="Şevval Çikot — vesikalık fotoğraf">
-          </figure>
-          <div class="about-text">
-            <h2 class="h3 service-title">Özgeçmiş</h2>
-            <p>Merhaba! Ben <strong>Şevval Çikot</strong>. 2025 yılından bu yana Akdeniz Üniversitesi'nde Bilgisayar Programcılığı okuyorum.</p>
-            <p>Liseyi Bayburt Rekabet Kurumu Kız Anadolu Lisesi'nde tamamladım. Teknolojiye olan merakım beni bu bölüme yönlendirdi; şu anda yapay zekâ üzerinde kendimi geliştiriyorum.</p>
-            <p>Boş zamanlarımda yazı yazmayı, kitap okumayı ve psikoloji üzerine okumalar yapmayı seviyorum. Yüzmek ve badminton oynamak beni dinlendiriyor; film, dizi ve oyunlar ise hem eğlence hem de ilham kaynağım.</p>
-            <p>Bu web sitesi, öğrendiklerimi bir araya getirdiğim ve gelişimimi paylaştığım kişisel alanım.</p>
-            <p>Web tarafında <abbr title="HyperText Markup Language">HTML</abbr> ve <abbr title="Cascading Style Sheets">CSS</abbr> öğreniyorum; programlama tarafında ise <abbr title="C Sharp">C#</abbr> ile ilk adımlarımı atıyorum. Örneğin bir öğeyi ortalamak için <code>display: flex</code> ve <code>justify-content: center</code> yeterli.</p>
-          </div>
-        </section>
-
-
-
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box"><ion-icon name="school-outline"></ion-icon></div>
-            <h2 class="h3">Eğitim</h2>
-          </div>
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Akdeniz Üniversitesi – Bilgisayar Programcılığı</h4>
-              <span>2025 — Devam ediyor</span>
-              <p class="timeline-text">Ön lisans eğitimimde programlama, web tasarım ve grafik animasyon alanlarında kendimi geliştiriyorum.</p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Bayburt Rekabet Kurumu Kız Anadolu Lisesi</h4>
-              <span>2019 — 2023</span>
-              <p class="timeline-text">Lise eğitimimi Bayburt'ta tamamladım.</p>
-            </li>
-          </ol>
-        </section>
-
-
-
-        <section class="section-block">
-          <h2 class="h3 skills-title">Ders Programı</h2>
-          <div class="table-wrapper">
-            <table class="schedule-table">
-              <caption>Akdeniz Üniversitesi · Teknik Bilimler MYO · Bilgisayar Programcılığı · 2026–2027 Güz Dönemi</caption>
-              <thead>
-                <tr><th scope="col">Saat</th><th scope="col">Pazartesi</th><th scope="col">Salı</th><th scope="col">Çarşamba</th><th scope="col">Perşembe</th><th scope="col">Cuma</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">08:30 – 09:20</th><td>—</td><td class="has-class" rowspan="2">Bilgisayar Donanımı<small>MBIL 209 · Derslik 303</small></td><td class="has-class" rowspan="2">Multimedya Uygulamaları<small>MBIL 213 · Derslik 303</small></td><td class="has-class" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Lab (L23)</small></td><td class="has-class" rowspan="4">Nesne Tabanlı Programlama I<small>MBIL 205 · Lab (L23)</small></td></tr>
-                <tr><th scope="row">09:30 – 10:20</th><td>—</td></tr>
-                <tr><th scope="row">10:30 – 11:20</th><td class="has-class" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Derslik 303</small></td><td class="has-class" rowspan="2">Yazılım Mimarileri<small>MBIL 207 · Lab (L23)</small></td><td class="has-class" rowspan="2">İçerik Yönetim Sistemleri<small>MBIL 215 · Derslik 303</small></td><td class="has-class" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Derslik 303</small></td></tr>
-                <tr><th scope="row">11:30 – 12:20</th></tr>
-                <tr><th scope="row">13:30 – 14:20</th><td class="has-class" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Lab (L23)</small></td><td class="has-class" rowspan="2">Görsel Programlama I<small>MBIL 201 · Derslik 303</small></td><td class="has-class" rowspan="2">Sistem Analiz ve Tasarımı I<small>MBIL 211 · Lab (L23)</small></td><td>—</td><td>—</td></tr>
-                <tr><th scope="row">14:30 – 15:20</th><td>—</td><td>—</td></tr>
-                <tr><th scope="row">15:30 – 16:20</th><td>—</td><td class="has-class" rowspan="2">Görsel Programlama I<small>MBIL 201 · Lab (L23)</small></td><td>—</td><td>—</td><td>—</td></tr>
-                <tr><th scope="row">16:30 – 17:20</th><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="section-block two-col">
-          <div class="content-card plain">
-            <h2 class="h3">İlgi Alanlarım</h2>
-            <ul class="styled-list">
-              <li>Yazı yazmak</li>
-              <li>Psikoloji</li>
-              <li>Yüzmek</li>
-              <li>Badminton oynamak</li>
-              <li>Film ve dizi izlemek</li>
-              <li>Kitap okumak</li>
-              <li>Oyun oynamak</li>
-            </ul>
-          </div>
-          <div class="content-card plain">
-            <h2 class="h3">En Güçlü Yeteneklerim</h2>
-            <ol class="styled-list">
-              <li>Adobe Photoshop</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>C#</li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="skill section-block">
-          <h2 class="h3 skills-title">Yeteneklerim</h2>
-          <ul class="skills-list content-card">
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h4 class="h5">Adobe Photoshop</h4>
-                <data value="60">60%</data>
-              </div>
-              <div class="skill-progress-bg" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Adobe Photoshop">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h4 class="h5">HTML</h4>
-                <data value="30">30%</data>
-              </div>
-              <div class="skill-progress-bg" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="HTML">
-                <div class="skill-progress-fill" style="width: 30%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h4 class="h5">CSS</h4>
-                <data value="20">20%</data>
-              </div>
-              <div class="skill-progress-bg" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="CSS">
-                <div class="skill-progress-fill" style="width: 20%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h4 class="h5">C#</h4>
-                <data value="10">10%</data>
-              </div>
-              <div class="skill-progress-bg" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="C#">
-                <div class="skill-progress-fill" style="width: 10%;"></div>
-              </div>
-            </li>
+    <section class="section" style="padding-top:20px">
+      <div class="wrap glass panel about-top reveal">
+        <figure class="id-photo"><img src="assets/images/vesikalik.jpg" alt="Şevval Çikot"></figure>
+        <div>
+          <h2 class="display">Özgeçmiş</h2>
+          <div class="prose" data-cms="about-long"><p>Merhaba! Ben <strong>Şevval Çikot</strong>. 2025 yılından bu yana Akdeniz Üniversitesi'nde Bilgisayar Programcılığı okuyorum.</p><p>Liseyi Bayburt Rekabet Kurumu Kız Anadolu Lisesi'nde tamamladım. Teknolojiye olan merakım beni bu bölüme yönlendirdi; şu anda yapay zekâ üzerinde kendimi geliştiriyorum.</p><p>Boş zamanlarımda yazı yazmayı, kitap okumayı ve psikoloji üzerine okumalar yapmayı seviyorum. Yüzmek ve badminton oynamak beni dinlendiriyor; film, dizi ve oyunlar ise hem eğlence hem de ilham kaynağım.</p><p>Bu web sitesi, öğrendiklerimi bir araya getirdiğim ve gelişimimi paylaştığım kişisel alanım.</p><p>Web tarafında <abbr title="HyperText Markup Language">HTML</abbr> ve <abbr title="Cascading Style Sheets">CSS</abbr> öğreniyorum; programlama tarafında ise <abbr title="C Sharp">C#</abbr> ile ilk adımlarımı atıyorum.</p></div>
+          <ul class="facts">
+            <li><span>E-posta</span><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a></li>
+            <li><span>Telefon</span><a href="tel:+905453133135">0545 313 31 35</a></li>
+            <li><span>Doğum tarihi</span><time datetime="2005-11-06">6 Kasım 2005</time></li>
+            <li><span>Memleket</span><span>Bayburt, Türkiye</span></li>
           </ul>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <section class="section-block">
-          <h2 class="h3 skills-title">En Sevdiğim Kod Parçası</h2>
-          <pre><code>&lt;!-- Responsive bir görsel / a responsive image --&gt;
-&lt;img src=&quot;photo.jpg&quot; alt=&quot;...&quot; loading=&quot;lazy&quot;&gt;
+    <section class="section">
+      <div class="wrap glass panel reveal">
+        <h2 class="display">Eğitim</h2>
+        <ol class="timeline">
+            <li><span class="when">2025 — Devam ediyor</span><h3>Akdeniz Üniversitesi – Bilgisayar Programcılığı</h3><p>Ön lisans eğitimimde programlama, web tasarım ve grafik animasyon alanlarında kendimi geliştiriyorum.</p></li>
+            <li><span class="when">2019 — 2023</span><h3>Bayburt Rekabet Kurumu Kız Anadolu Lisesi</h3><p>Lise eğitimimi Bayburt'ta tamamladım.</p></li>
+        </ol>
+      </div>
+    </section>
 
-.card {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}</code></pre>
-        </section>
+    <section class="section">
+      <div class="wrap glass panel reveal">
+        <h2 class="display">Ders programı</h2>
+        <div class="table-wrap">
+          <table class="schedule">
+            <caption>Akdeniz Üniversitesi · Teknik Bilimler MYO · Bilgisayar Programcılığı · 2026–2027 Güz Dönemi</caption>
+            <thead><tr><th scope="col">Saat</th><th scope="col">Pazartesi</th><th scope="col">Salı</th><th scope="col">Çarşamba</th><th scope="col">Perşembe</th><th scope="col">Cuma</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">08:30 – 09:20</th><td>—</td><td class="has" rowspan="2">Bilgisayar Donanımı<small>MBIL 209 · Derslik 303</small></td><td class="has" rowspan="2">Multimedya Uygulamaları<small>MBIL 213 · Derslik 303</small></td><td class="has" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Lab (L23)</small></td><td class="has" rowspan="4">Nesne Tabanlı Programlama I<small>MBIL 205 · Lab (L23)</small></td></tr>
+              <tr><th scope="row">09:30 – 10:20</th><td>—</td></tr>
+              <tr><th scope="row">10:30 – 11:20</th><td class="has" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Derslik 303</small></td><td class="has" rowspan="2">Yazılım Mimarileri<small>MBIL 207 · Lab (L23)</small></td><td class="has" rowspan="2">İçerik Yönetim Sistemleri<small>MBIL 215 · Derslik 303</small></td><td class="has" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Derslik 303</small></td></tr>
+              <tr><th scope="row">11:30 – 12:20</th></tr>
+              <tr><th scope="row">13:30 – 14:20</th><td class="has" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Lab (L23)</small></td><td class="has" rowspan="2">Görsel Programlama I<small>MBIL 201 · Derslik 303</small></td><td class="has" rowspan="2">Sistem Analiz ve Tasarımı I<small>MBIL 211 · Lab (L23)</small></td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">14:30 – 15:20</th><td>—</td><td>—</td></tr>
+              <tr><th scope="row">15:30 – 16:20</th><td>—</td><td class="has" rowspan="2">Görsel Programlama I<small>MBIL 201 · Lab (L23)</small></td><td>—</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">16:30 – 17:20</th><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-        <section>
-          <h2 class="h3 skills-title">Sevdiğim Bir Söz</h2>
-          <blockquote>
-            <p>“Ders alınmış başarısızlık, aslında bir başarıdır.”</p>
-            <cite>— Edwin Land</cite>
-          </blockquote>
-        </section>
+    <section class="section">
+      <div class="wrap two-col">
+        <div class="glass panel reveal"><h2 class="display">İlgi alanlarım</h2><ul class="list" data-cms="interests"><li>Yazı yazmak</li><li>Psikoloji</li><li>Yüzmek</li><li>Badminton oynamak</li><li>Film ve dizi izlemek</li><li>Kitap okumak</li><li>Oyun oynamak</li></ul></div>
+        <div class="glass panel reveal"><h2 class="display">En güçlü yeteneklerim</h2><ol class="list" data-cms="top-skills"><li>Adobe Photoshop</li><li>HTML</li><li>CSS</li><li>C#</li></ol></div>
+      </div>
+    </section>
 
-      </article>
+    <section class="section">
+      <div class="wrap glass panel reveal">
+        <h2 class="display">Yeteneklerim</h2>
+        <div class="skills" data-cms="skills">
+          <div class="skill-row">
+            <div class="skill-top"><span>Adobe Photoshop</span><data value="60">%60</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Adobe Photoshop"><i style="--w:60%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>HTML</span><data value="30">%30</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="HTML"><i style="--w:30%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>CSS</span><data value="20">%20</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="CSS"><i style="--w:20%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>C#</span><data value="10">%10</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="C#"><i style="--w:10%"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
-
+    <section class="section">
+      <div class="wrap glass panel reveal">
+        <h2 class="display">Sevdiğim bir söz</h2>
+        <blockquote data-cms="quote"><p>“Ders alınmış başarısızlık, aslında bir başarıdır.”</p><cite>— Edwin Land</cite></blockquote>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Şevval Çikot — Tüm hakları saklıdır.</p>
-    <p>Şablon: <a href="https://github.com/codewithsadee/vcard-personal-portfolio" target="_blank" rel="noopener">vCard by codewithsadee</a></p>
+  <footer class="seabed">
+    <div class="wrap">
+      <div class="glass footer-card reveal">
+        <span class="depth-tag">Deniz tabanı · 40 m</span>
+        <h2 class="display">Şişeye bir mesaj<br>bırak.</h2>
+        <div class="btns">
+          <a class="btn btn-light" href="iletisim.html">Mesaj yaz <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projeler.html">Projelerime göz at</a>
+        </div>
+        <div class="footer-meta"><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="panel.html" rel="nofollow">Panel</a></div>
+      </div>
+    </div>
+    <div class="weeds" aria-hidden="true"><svg viewBox="0 0 40 111" width="40" height="111" style="left:1.8%;animation-delay:-3.2s;animation-duration:6.1s"><path d="M20.0 111 C24.226165245115904 73.26 15.773834754884096 36.63 22.113082622557954 4" stroke="#175a4d" stroke-width="5.3"/></svg><svg viewBox="0 0 40 77" width="40" height="77" style="left:8.0%;animation-delay:-0.4s;animation-duration:5.3s"><path d="M20.0 77 C7.049878436375577 50.82 32.95012156362442 25.41 13.52493921818779 4" stroke="#2c8a6c" stroke-width="6.7"/></svg><svg viewBox="0 0 40 124" width="40" height="124" style="left:11.0%;animation-delay:-3.8s;animation-duration:7.8s"><path d="M20.0 124 C9.466454912190077 81.84 30.533545087809923 40.92 14.733227456095038 4" stroke="#6a8f3a" stroke-width="5.9"/></svg><svg viewBox="0 0 40 143" width="40" height="143" style="left:19.5%;animation-delay:-5.2s;animation-duration:5.9s"><path d="M20.0 143 C33.33514295660176 94.38000000000001 6.664857043398239 47.190000000000005 26.66757147830088 4" stroke="#1f6e5a" stroke-width="5.2"/></svg><svg viewBox="0 0 40 88" width="40" height="88" style="left:25.8%;animation-delay:-1.1s;animation-duration:6.7s"><path d="M20.0 88 C14.637491074854163 58.080000000000005 25.36250892514584 29.040000000000003 17.31874553742708 4" stroke="#6a8f3a" stroke-width="8.3"/></svg><svg viewBox="0 0 40 151" width="40" height="151" style="left:30.8%;animation-delay:-0.4s;animation-duration:5.6s"><path d="M20.0 151 C21.33684503986762 99.66000000000001 18.66315496013238 49.830000000000005 20.66842251993381 4" stroke="#1f6e5a" stroke-width="5.3"/></svg><svg viewBox="0 0 40 157" width="40" height="157" style="left:38.5%;animation-delay:-2.2s;animation-duration:5.7s"><path d="M20.0 157 C19.03685224351087 103.62 20.96314775648913 51.81 19.518426121755436 4" stroke="#3aa37d" stroke-width="8.7"/></svg><svg viewBox="0 0 40 93" width="40" height="93" style="left:45.6%;animation-delay:-3.0s;animation-duration:6.0s"><path d="M20.0 93 C8.291940302281557 61.38 31.708059697718443 30.69 14.145970151140778 4" stroke="#2c8a6c" stroke-width="6.2"/></svg><svg viewBox="0 0 40 127" width="40" height="127" style="left:50.4%;animation-delay:-4.5s;animation-duration:5.5s"><path d="M20.0 127 C9.305841791138938 83.82000000000001 30.69415820886106 41.910000000000004 14.65292089556947 4" stroke="#1f6e5a" stroke-width="6.7"/></svg><svg viewBox="0 0 40 132" width="40" height="132" style="left:57.3%;animation-delay:-5.3s;animation-duration:5.9s"><path d="M20.0 132 C27.407984253958766 87.12 12.592015746041234 43.56 23.703992126979383 4" stroke="#1f6e5a" stroke-width="7.3"/></svg><svg viewBox="0 0 40 158" width="40" height="158" style="left:63.4%;animation-delay:-5.0s;animation-duration:7.8s"><path d="M20.0 158 C22.237065719909783 104.28 17.762934280090217 52.14 21.11853285995489 4" stroke="#175a4d" stroke-width="6.8"/></svg><svg viewBox="0 0 40 130" width="40" height="130" style="left:71.2%;animation-delay:-3.9s;animation-duration:8.0s"><path d="M20.0 130 C7.698743972722152 85.8 32.301256027277844 42.9 13.849371986361076 4" stroke="#1f6e5a" stroke-width="7.8"/></svg><svg viewBox="0 0 40 127" width="40" height="127" style="left:75.9%;animation-delay:-5.6s;animation-duration:6.1s"><path d="M20.0 127 C30.837128182666568 83.82000000000001 9.162871817333432 41.910000000000004 25.418564091333284 4" stroke="#175a4d" stroke-width="6.4"/></svg><svg viewBox="0 0 40 148" width="40" height="148" style="left:81.7%;animation-delay:-4.4s;animation-duration:6.2s"><path d="M20.0 148 C12.109817694951024 97.68 27.890182305048974 48.84 16.054908847475513 4" stroke="#1f6e5a" stroke-width="6.1"/></svg><svg viewBox="0 0 40 133" width="40" height="133" style="left:87.9%;animation-delay:-0.8s;animation-duration:6.3s"><path d="M20.0 133 C17.246039177360515 87.78 22.753960822639485 43.89 18.623019588680258 4" stroke="#175a4d" stroke-width="6.1"/></svg><svg viewBox="0 0 40 140" width="40" height="140" style="left:95.1%;animation-delay:-2.3s;animation-duration:5.7s"><path d="M20.0 140 C33.62107826803321 92.4 6.378921731966791 46.2 26.810539134016604 4" stroke="#175a4d" stroke-width="7.7"/></svg><div class="sand"></div></div>
+    <p class="seabed-tag">&copy; 2026 Şevval Çikot — Tüm hakları saklıdır. · Özel tasarım</p>
   </footer>
 
-  <script src="assets/js/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/cms.js" data-after="main.js sea.js"></script>
 </body>
-
 </html>
