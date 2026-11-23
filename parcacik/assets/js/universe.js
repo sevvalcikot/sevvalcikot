@@ -160,8 +160,9 @@ function text(str) {
 
 /* görselden: her parçacık bir pikselin rengini alır, parlaklık derinlik olur */
 const imgCache = new Map();
-function image(url) {
-  if (imgCache.has(url)) return imgCache.get(url);
+function image(url, cut = false) {
+  const key = url + (cut ? '#cut' : '');
+  if (imgCache.has(key)) return imgCache.get(key);
   const p = new Promise((res, rej) => {
     const im = new Image();
     im.crossOrigin = 'anonymous';
@@ -171,31 +172,56 @@ function image(url) {
       const cv = document.createElement('canvas'); cv.width = W; cv.height = Hh;
       const g = cv.getContext('2d', { willReadFrequently: true });
       g.drawImage(im, 0, 0, W, Hh);
-      try { res(fromCanvas(g, W, Hh, false)); } catch (e) { rej(e); }
+      try { if (cut) cutBackground(g, W, Hh); res(fromCanvas(g, W, Hh, false)); } catch (e) { rej(e); }
     };
     im.onerror = rej;
     im.src = url;
   });
-  imgCache.set(url, p);
+  imgCache.set(key, p);
   return p;
 }
 
+/* vesikalık arka planını sil: kenarlardan başlayıp açık ve renksiz pikselleri boşalt */
+function cutBackground(g, W, Hh) {
+  const im = g.getImageData(0, 0, W, Hh), d = im.data, seen = new Uint8Array(W * Hh), q = [];
+  const bg = (i) => {
+    const o = i * 4, r = d[o], gg = d[o + 1], b = d[o + 2], mx = Math.max(r, gg, b), mn = Math.min(r, gg, b);
+    return mx > 150 && (mx - mn) / mx < 0.14;
+  };
+  for (let x = 0; x < W; x++) { q.push(x, (Hh - 1) * W + x); }
+  for (let y = 0; y < Hh; y++) { q.push(y * W, y * W + W - 1); }
+  while (q.length) {
+    const i = q.pop();
+    if (seen[i] || !bg(i)) continue;
+    seen[i] = 1; d[i * 4 + 3] = 0;
+    const x = i % W, y = (i / W) | 0;
+    if (x > 0) q.push(i - 1); if (x < W - 1) q.push(i + 1); if (y > 0) q.push(i - W); if (y < Hh - 1) q.push(i + W);
+  }
+  g.putImageData(im, 0, 0);
+}
+
 function fromCanvas(g, W, Hh, mono) {
-  const d = g.getImageData(0, 0, W, Hh).data, cand = [];
+  const d = g.getImageData(0, 0, W, Hh).data, cand = [], cum = [];
+  let tot = 0;
   for (let y = 0; y < Hh; y++) for (let x = 0; x < W; x++) {
     const o = (y * W + x) * 4;
-    if (d[o + 3] > 128) cand.push(o);
+    if (d[o + 3] <= 128) continue;
+    // görsellerde parlak yerlere daha çok parçacık: gözler, kaşlar gibi koyu ayrıntılar boşlukla belirir
+    const lum = (.3 * d[o] + .59 * d[o + 1] + .11 * d[o + 2]) / 255;
+    tot += mono ? 1 : .04 + Math.pow(lum, 1.6);
+    cand.push(o); cum.push(tot);
   }
   if (!cand.length) return SHAPES.sphere();
+  const pickW = (u) => { let lo = 0, hi = cum.length - 1; while (lo < hi) { const m = (lo + hi) >> 1; if (cum[m] < u) lo = m + 1; else hi = m; } return cand[lo]; };
   const scale = (mono ? 2.2 : H) / Hh, P = new Float32Array(N * 3), C = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
-    const o = cand[(i * 7919 + Math.floor(rand[i] * cand.length)) % cand.length], px = (o / 4) % W, py = Math.floor(o / 4 / W);
+    const o = pickW(((i + rand[i]) / N) * tot), px = (o / 4) % W, py = Math.floor(o / 4 / W);
     const r = d[o] / 255, gg = d[o + 1] / 255, b = d[o + 2] / 255, lum = .3 * r + .59 * gg + .11 * b;
     P[i * 3] = (px - W / 2 + Math.random()) * scale;
     P[i * 3 + 1] = (Hh / 2 - py - Math.random()) * scale;
-    P[i * 3 + 2] = mono ? (Math.random() - .5) * .3 : (lum - .5) * .9 + (Math.random() - .5) * .06;
+    P[i * 3 + 2] = mono ? (Math.random() - .5) * .3 : (lum - .5) * .5 + (Math.random() - .5) * .05;
     if (mono) { grad(px / W, tmp); C[i * 3] = tmp.r; C[i * 3 + 1] = tmp.g; C[i * 3 + 2] = tmp.b; }
-    else { C[i * 3] = Math.min(1, r * 1.08 + .03); C[i * 3 + 1] = Math.min(1, gg * 1.08 + .03); C[i * 3 + 2] = Math.min(1, b * 1.08 + .03); }
+    else { C[i * 3] = Math.min(1, Math.pow(r, .85) * 1.12 + .03); C[i * 3 + 1] = Math.min(1, Math.pow(gg, .85) * 1.12 + .03); C[i * 3 + 2] = Math.min(1, Math.pow(b, .85) * 1.12 + .03); }
   }
   return { pos: P, col: C };
 }
@@ -229,7 +255,7 @@ let hudShape = '';
 async function resolve(spec) {
   const [kind, ...rest] = spec.split(':'), arg = rest.join(':');
   hudShape = LABELS[kind] || kind;
-  if (kind === 'img' || kind === 'portrait') { hudShape = LABELS[kind === 'portrait' ? 'portrait' : 'image']; return image(arg); }
+  if (kind === 'img' || kind === 'portrait') { hudShape = LABELS[kind === 'portrait' ? 'portrait' : 'image']; return image(arg, true); }
   if (kind === 'text') return text(arg);
   if (kind === 'bars') return bars(arg.split(',').map(Number));
   if (kind === 'skills') {
@@ -336,7 +362,7 @@ function loop() {
   // kaydırma hızı ve eğim ile hafif dönme
   scrollV += ((scrollY - lastY) - scrollV) * .1; lastY = scrollY;
   tiltX += (tx - tiltX) * .05; tiltY += (ty - tiltY) * .05;
-  const side = wide ? (sideOf(active) === 'left' ? -2.1 : sideOf(active) === 'center' ? 0 : 2.1) : 0;
+  const side = wide ? (sideOf(active) === 'left' ? -2.3 : sideOf(active) === 'center' ? 0 : 2.3) : 0;
   group.position.x += (side - group.position.x) * .05;
   group.position.y += ((wide ? 0 : .9) - group.position.y) * .05;
   if (!reduce) {
