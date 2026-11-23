@@ -161,13 +161,18 @@
       if (!window.Store) return;
       let saved = await window.Store.getAllContent();
       if (document.querySelector('[data-cms="blog-post"][data-slug=""]') && !(saved && saved.blog)) saved = Object.assign({}, saved, { blog: (await window.Store.seed()).blog });
-      if (saved && Object.keys(saved).length) {
-        const img = (p) => window.Store.imageUrl(p);
-        document.querySelectorAll('[data-cms]').forEach((el) => {
+      const img = (p) => window.Store.imageUrl(p);
+      /* sayfa içeriği sonradan değişirse (ör. 3D oda) tekrar uygulamak için */
+      window.cmsApply = (root = document) => {
+        if (!saved || !Object.keys(saved).length) return;
+        root.querySelectorAll('[data-cms]').forEach((el) => {
           const fn = R[el.dataset.cms];
           try { if (fn) fn(el, saved, img); } catch (e) { console.warn('CMS', el.dataset.cms, e); }
         });
-      }
+      };
+      window.cmsApply();
+      window.cmsContent = saved || {};
+      document.dispatchEvent(new CustomEvent('cms:ready'));
     } catch (e) {
       console.warn('CMS içeriği alınamadı, hazır içerik gösteriliyor.', e);
     } finally {

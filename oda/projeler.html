@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeler | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot tarafından Grafik Animasyon dersi kapsamında hazırlanan projeler.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="home-title" content="Şevval Çikot | Kişisel Web Sitesi">
+  <meta name="home-alt" content="en/index.html">
+  <meta name="theme-color" content="#ffe6d2">
+  <link rel="alternate" hreflang="en" href="en/projects.html">
+  <link rel="icon" href="../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body data-root="../">
+  <canvas class="room" aria-label="Şevval'in Odası"></canvas>
+  <div class="loader" aria-hidden="true"><span></span>Oda hazırlanıyor</div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand"><img src="../assets/images/avatar.jpg" alt=""><span class="name">Şevval Çikot</span></a>
+      <nav class="nav-links" aria-label="Menü"><a href="index.html">Oda</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html" aria-current="page">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+      <div class="nav-end">
+        <button class="pill tour-btn" type="button" data-tour aria-pressed="false" title="Turu başlat">▶<span class="tour-label"> Odayı gezdir</span></button>
+        <a href="en/projects.html" class="pill" hreflang="en" title="Switch to English" data-lang-link>EN</a>
+        <button class="pill menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Oda</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html" aria-current="page">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+  </header>
+
+  <div class="intro card" data-intro hidden>
+      <p class="role">Bilgisayar Programcılığı · Akdeniz Üniversitesi</p>
+      <p class="display intro-title">Şevval Çikot</p>
+      <p class="lead">Odama hoş geldin! Sürükleyerek odayı döndür, eşyalara tıkla: laptopumda projelerim, duvarda fotoğraflarım, kitaplıkta blog yazılarım var.</p>
+      <div class="btns">
+        <button class="btn btn-main" type="button" data-tour aria-pressed="false">Odayı gezdir <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="btn btn-ghost" href="hakkimda.html">Hakkımda</a>
+      </div>
+      <p class="hint" aria-hidden="true"><span><b>sürükle</b> döndür</span><span><b>kaydır</b> yakınlaş</span><span><b>tıkla</b> aç</span><span><b>lamba, düğme, kedi</b> sürpriz</span></p>
+      <p class="nogl">Tarayıcın 3D görüntüyü desteklemiyor; sayfalara menüden ulaşabilirsin.</p>
+    </div>
+
+  <aside class="sheet" data-sheet aria-label="Sayfa içeriği" aria-hidden="false">
+    <button class="sheet-close" type="button" data-sheet-close aria-label="Odaya dön">✕<span> Odaya dön</span></button>
+    <main class="sheet-body" data-sheet-body>
+
+    <section class="page-hero wrap">
+      <span class="crumb">Grafik Animasyon I</span>
+      <h1 class="display" tabindex="-1">Projeler</h1>
+      <p class="lead">Adobe Photoshop ile hazırladığım çalışmalar. Öncesini ve sonrasını görmek için bir projeye dokunun.</p>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">Tüm çalışmalar</h2>
+        <div class="filters" role="group" aria-label="Tüm çalışmalar"><button type="button" data-filter="all" aria-pressed="true">Tümü</button><button type="button" data-filter="photo" aria-pressed="false">Fotoğraf Düzenleme</button><button type="button" data-filter="design" aria-pressed="false">Tasarım</button><button type="button" data-filter="web" aria-pressed="false">Web Arayüzü</button></div>
+        <div class="project-grid" data-cms="project-grid">
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../assets/images/projeler/proje1-oncesi.jpg" data-cap="Öncesi" data-img2="../assets/images/projeler/proje1-sonrasi.jpg" data-cap2="Sonrası" data-title="Image Stack" data-text="Akdeniz Üniversitesi tramvay durağında aynı açıdan çektiğim çok sayıda fotoğrafı Image Stack (Görüntü Yığını) yöntemiyle birleştirdim; böylece karedeki hareketli nesneleri ve gürültüyü temizleyerek tek, temiz bir görüntü elde ettim.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje1-sonrasi.jpg" alt="Image Stack" loading="lazy"><span class="tag">Fotoğraf Düzenleme</span></span>
+          <span class="project-body"><span class="ptitle">Image Stack</span><span class="pdesc">Akdeniz Üniversitesi tramvay durağında aynı açıdan çektiğim çok sayıda fotoğrafı Image Stack (Görüntü Yığını) yöntemiyle birleştirdim; böylece karedeki hareketli nesneleri ve gürültüyü temizleyerek tek, temiz bir görüntü elde ettim.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../assets/images/projeler/proje2-oncesi.jpg" data-cap="Öncesi" data-img2="../assets/images/projeler/proje2-sonrasi.jpg" data-cap2="Sonrası" data-title="History Brush" data-text="Fotoğrafı siyah-beyaza çevirdikten sonra History Brush (Geçmiş Fırçası) aracıyla yalnızca köpeğin ve yeşil yeleğinin rengini geri getirerek konuyu arka plandan ayırıp öne çıkardım.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje2-sonrasi.jpg" alt="History Brush" loading="lazy"><span class="tag">Fotoğraf Düzenleme</span></span>
+          <span class="project-body"><span class="ptitle">History Brush</span><span class="pdesc">Fotoğrafı siyah-beyaza çevirdikten sonra History Brush (Geçmiş Fırçası) aracıyla yalnızca köpeğin ve yeşil yeleğinin rengini geri getirerek konuyu arka plandan ayırıp öne çıkardım.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="design" data-lb data-img="../assets/images/projeler/proje3-oncesi.jpg" data-cap="Öncesi" data-img2="../assets/images/projeler/proje3-sonrasi.jpg" data-cap2="Sonrası" data-title="Ürün Tanıtımı" data-text="Bir telefon kılıfını arka planından ayırıp yansıma efekti, renk uyumu ve tipografiyle &quot;Three in One Phone Case&quot; ürün tanıtım afişine dönüştürdüm.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje3-sonrasi.jpg" alt="Ürün Tanıtımı" loading="lazy"><span class="tag">Tasarım</span></span>
+          <span class="project-body"><span class="ptitle">Ürün Tanıtımı</span><span class="pdesc">Bir telefon kılıfını arka planından ayırıp yansıma efekti, renk uyumu ve tipografiyle &quot;Three in One Phone Case&quot; ürün tanıtım afişine dönüştürdüm.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../assets/images/projeler/proje4-oncesi.jpg" data-cap="Öncesi" data-img2="../assets/images/projeler/proje4-sonrasi.jpg" data-cap2="Sonrası" data-title="Karakalem Renklendirme" data-text="Siyah-beyaz bir karakalem karakter çizimini katmanlar, karışım modları ve fırça araçlarıyla renklendirerek çizimin gölge ve dokusunu koruyan canlı bir görsele dönüştürdüm.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje4-sonrasi.jpg" alt="Karakalem Renklendirme" loading="lazy"><span class="tag">Fotoğraf Düzenleme</span></span>
+          <span class="project-body"><span class="ptitle">Karakalem Renklendirme</span><span class="pdesc">Siyah-beyaz bir karakalem karakter çizimini katmanlar, karışım modları ve fırça araçlarıyla renklendirerek çizimin gölge ve dokusunu koruyan canlı bir görsele dönüştürdüm.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="design" data-lb data-img="../assets/images/projeler/proje5.jpg" data-cap="Sonuç" data-img2="../assets/images/projeler/proje5-katmanlar-ss.jpg" data-cap2="Katmanlar" data-title="Smart Object" data-text="Yıldız desenlerini Smart Object (Akıllı Nesne) olarak kalem kutusunun üzerine yerleştirdim; akıllı nesne sayesinde desenler kalite kaybı olmadan ölçeklenip döndürülebiliyor ve tekrar düzenlenebiliyor.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje5.jpg" alt="Smart Object" loading="lazy"><span class="tag">Tasarım</span></span>
+          <span class="project-body"><span class="ptitle">Smart Object</span><span class="pdesc">Yıldız desenlerini Smart Object (Akıllı Nesne) olarak kalem kutusunun üzerine yerleştirdim; akıllı nesne sayesinde desenler kalite kaybı olmadan ölçeklenip döndürülebiliyor ve tekrar düzenlenebiliyor.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="web" data-lb data-img="../assets/images/projeler/proje6-sonrasi.jpg" data-cap="Sonuç" data-img2="../assets/images/projeler/proje6-katmanlar-ss.jpg" data-cap2="Katmanlar" data-title="Web Arayüzü Hazırlama" data-text="Bir banka web sitesinin anasayfa arayüzünü Photoshop&#x27;ta katmanlar, gruplar ve Layer Comps (Katman Kompozisyonları) kullanarak baştan tasarladım.">
+          <span class="project-thumb"><img src="../assets/images/projeler/proje6-sonrasi.jpg" alt="Web Arayüzü Hazırlama" loading="lazy"><span class="tag">Web Arayüzü</span></span>
+          <span class="project-body"><span class="ptitle">Web Arayüzü Hazırlama</span><span class="pdesc">Bir banka web sitesinin anasayfa arayüzünü Photoshop&#x27;ta katmanlar, gruplar ve Layer Comps (Katman Kompozisyonları) kullanarak baştan tasarladım.</span></span>
+        </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" data-lightbox>
+      <button class="lb-close" type="button" aria-label="Kapat">&times;</button>
+      <div class="lb-box glass">
+        <div class="lb-media">
+          <figure><img src="" alt=""><figcaption></figcaption></figure>
+          <figure hidden><img src="" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="lb-text">
+          <h3 data-lb-title></h3>
+          <p data-lb-text></p>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer class="sheet-foot">
+      <div class="foot-links"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../panel.html" rel="nofollow">Panel</a></div>
+      <p>© 2026 Şevval Çikot · 3D oda tamamen kodla, Three.js ile kuruldu</p>
+    </footer>
+  </aside>
+
+  <div class="tip" data-tip hidden></div>
+  <div class="bubble" data-bubble hidden></div>
+  <p class="caption" data-caption hidden></p>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/blog.js"></script>
+  <script src="../assets/js/cms.js"></script>
+  <script src="assets/js/ui.js?v=5"></script>
+  <script type="module" src="assets/js/room.js?v=5"></script>
+</body>
+</html>
