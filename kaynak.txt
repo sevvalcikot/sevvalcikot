@@ -25,6 +25,12 @@ Yönetim paneli (CMS) + kişisel asistan: panel.html
 - Veritabanı ve giriş: Supabase (https://supabase.com) — supabase-js 2.97.0.
   Kurulum adımları: KURULUM.txt, tablo ve güvenlik kuralları: supabase-kurulum.sql.
 
+Blog: blog.html (3 yazı; her yazının kategorileri ve etiketleri var).
+- Yazılar panelden (Blog bölümü) eklenip düzenlenebilir; kategoriye göre filtreleme yapılabilir.
+
+Tasarım denetimi: Impeccable skill'i (Claude Skills) ile blog sayfaları renk/kontrast,
+tipografi, yerleşim, responsive ve erişilebilirlik açısından kontrol edildi.
+
 Diğer kaynaklar:
 - Yazı tipleri: Fraunces ve Manrope (Google Fonts)
 - Tüm fotoğraflar ve proje görselleri Şevval Çikot'a aittir.

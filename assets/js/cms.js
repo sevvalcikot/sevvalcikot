@@ -92,6 +92,63 @@
     },
   };
 
+  /* ---------- BLOG ---------- */
+  const B = {
+    tr: { read: 'Yazıyı oku', tags: 'Etiketler', cats: 'Kategoriler', all: 'Tümü', posts: 'Yazılar', back: 'Tüm yazılar', next: 'Sonraki yazı', filt: 'Kategoriye göre filtrele', locale: 'tr-TR' },
+    en: { read: 'Read the post', tags: 'Tags', cats: 'Categories', all: 'All', posts: 'Posts', back: 'All posts', next: 'Next post', filt: 'Filter by category', locale: 'en-US' },
+  }[lang];
+  const fdate = (d) => { try { return new Date(d + 'T12:00:00').toLocaleDateString(B.locale, { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return d; } };
+  const L = (o) => (Array.isArray(o) ? o : (o && (o[lang] || o.tr)) || []);
+  const postHref = (p) => (p.static ? `blog-${p.slug}.html` : `yazi.html?s=${encodeURIComponent(p.slug)}`);
+  const sortPosts = (arr) => [...arr].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const chips = (arr, cls = 'chip') => arr.map((x) => `<li class="${cls}">${esc(x)}</li>`).join('');
+  const bodyHtml = (txt) => {
+    const out = [];
+    String(txt || '').trim().split(/\n\s*\n/).forEach((block) => {
+      let lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+      if (!lines.length) return;
+      if (lines.every((l) => /^\d+[.)]\s/.test(l))) { out.push('<ol>' + lines.map((l) => `<li>${esc(l.replace(/^\d+[.)]\s+/, ''))}</li>`).join('') + '</ol>'); return; }
+      if (lines[0].startsWith('## ')) { out.push(`<h2>${esc(lines[0].slice(3))}</h2>`); lines = lines.slice(1); if (!lines.length) return; }
+      out.push('<p>' + lines.map(esc).join('<br>') + '</p>');
+    });
+    return out.join('');
+  };
+  const blogCard = (p, img) => `<article class="blog-card glass reveal" data-bcats="${esc(L(p.cats).join('|'))}"><a class="blog-link" href="${postHref(p)}">`
+    + `<span class="blog-thumb"><img src="${esc(img(p.img))}" alt="" loading="lazy"></span>`
+    + `<span class="blog-body"><span class="blog-meta"><time datetime="${esc(p.date)}">${esc(fdate(p.date))}</time><span>${esc(L(p.cats).join(' · '))}</span></span>`
+    + `<h3 class="blog-title">${esc(T(p.title))}</h3><span class="blog-excerpt">${esc(T(p.excerpt))}</span>`
+    + `<span class="blog-more">${B.read} ${ARROW}</span></span></a>`
+    + `<ul class="tags" aria-label="${B.tags}">${chips(L(p.tags).map((t) => '#' + t), 'tag-chip')}</ul></article>`;
+  Object.assign(R, {
+    'blog-list': (el, c, img) => {
+      if (!c.blog) return;
+      const posts = sortPosts(c.blog), cats = [];
+      posts.forEach((p) => L(p.cats).forEach((x) => { if (!cats.includes(x)) cats.push(x); }));
+      el.innerHTML = `<h2 class="display" style="font-size:clamp(26px,3.5vw,36px)">${B.posts}</h2>`
+        + `<div class="filters" role="group" aria-label="${B.filt}" data-bfilters><button type="button" data-bf="all" aria-pressed="true">${B.all}</button>`
+        + cats.map((x) => `<button type="button" data-bf="${esc(x)}" aria-pressed="false">${esc(x)}</button>`).join('') + '</div>'
+        + `<div class="blog-grid">${posts.map((p) => blogCard(p, img)).join('')}</div>`;
+    },
+    'blog-latest': (el, c, img) => { if (c.blog) el.innerHTML = sortPosts(c.blog).slice(0, 3).map((p) => blogCard(p, img)).join(''); },
+    'blog-post': (el, c, img) => {
+      if (!c.blog) return;
+      const slug = el.dataset.slug || new URLSearchParams(location.search).get('s') || '';
+      const posts = sortPosts(c.blog), i = posts.findIndex((p) => p.slug === slug);
+      if (i < 0) return;
+      const p = posts[i], nxt = posts.length > 1 ? posts[(i + 1) % posts.length] : null;
+      document.title = `${T(p.title)} | Şevval Çikot`;
+      const md = document.querySelector('meta[name="description"]'); if (md) md.content = T(p.excerpt);
+      el.innerHTML = `<header class="page-hero post-head"><span class="depth-tag">Blog · <time datetime="${esc(p.date)}">${esc(fdate(p.date))}</time></span>`
+        + `<h1 class="display">${esc(T(p.title))}</h1><p class="lead">${esc(T(p.excerpt))}</p>`
+        + `<dl class="post-taxo"><div><dt>${B.cats}</dt><dd><ul class="chips">${chips(L(p.cats))}</ul></dd></div>`
+        + `<div><dt>${B.tags}</dt><dd><ul class="tags">${chips(L(p.tags).map((t) => '#' + t), 'tag-chip')}</ul></dd></div></dl></header>`
+        + (p.img ? `<figure class="post-cover glass"><img src="${esc(img(p.img))}" alt="${esc(T(p.title))}"></figure>` : '')
+        + `<div class="post-body glass prose">${bodyHtml(T(p.body))}</div>`
+        + `<nav class="post-nav" aria-label="Blog"><a class="btn btn-ghost" href="blog.html">← ${B.back}</a>`
+        + (nxt ? `<a class="link-more" href="${postHref(nxt)}">${B.next}: ${esc(T(nxt.title))} ${ARROW}</a>` : '') + '</nav>';
+    },
+  });
+
   let started = false;
   const start = () => {
     if (started) return; started = true;
@@ -102,7 +159,8 @@
   (async () => {
     try {
       if (!window.Store) return;
-      const saved = await window.Store.getAllContent();
+      let saved = await window.Store.getAllContent();
+      if (document.querySelector('[data-cms="blog-post"][data-slug=""]') && !(saved && saved.blog)) saved = Object.assign({}, saved, { blog: (await window.Store.seed()).blog });
       if (saved && Object.keys(saved).length) {
         const img = (p) => window.Store.imageUrl(p);
         document.querySelectorAll('[data-cms]').forEach((el) => {

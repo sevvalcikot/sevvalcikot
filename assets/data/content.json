@@ -299,5 +299,144 @@
    "code": "MBIL 205",
    "room": "Lab (L23)"
   }
+ ],
+ "blog": [
+  {
+   "id": "b1",
+   "slug": "layer-comps",
+   "static": true,
+   "date": "2026-10-12",
+   "img": "projeler/proje6-sonrasi.jpg",
+   "title": {
+    "tr": "Photoshop'ta Layer Comps (Katman Kompozisyonları) kullanımı",
+    "en": "Using Layer Comps in Photoshop"
+   },
+   "cats": {
+    "tr": [
+     "Grafik Tasarım",
+     "Web Arayüzü"
+    ],
+    "en": [
+     "Graphic Design",
+     "Web UI"
+    ]
+   },
+   "tags": {
+    "tr": [
+     "Adobe",
+     "Photoshop",
+     "layer comps",
+     "katmanlar",
+     "arayüz tasarımı"
+    ],
+    "en": [
+     "Adobe",
+     "Photoshop",
+     "layer comps",
+     "layers",
+     "UI design"
+    ]
+   },
+   "excerpt": {
+    "tr": "Bir web arayüzünün farklı hâllerini tek PSD dosyasında saklamanın en düzenli yolu: Layer Comps.",
+    "en": "The tidiest way to keep several states of a web UI in a single PSD file: Layer Comps."
+   },
+   "body": {
+    "tr": "Grafik Animasyon I dersinde bir banka web sitesinin anasayfa arayüzünü Photoshop'ta tasarladım. Tasarım ilerledikçe aynı sayfanın farklı hâllerini (menü açık, menü kapalı, farklı bir banner) göstermem gerekti. Her hâl için ayrı bir dosya kaydetmek yerine Layer Comps özelliğini kullandım.\n\n## Layer Comps nedir?\n\nLayer Comps, katmanların o anki durumunun bir \"fotoğrafını\" çeker. Bir kompozisyon; katmanların görünürlüğünü, konumunu ve katman stillerini (gölge, kontur gibi) hatırlar. Böylece tek bir PSD dosyası içinde birçok tasarım seçeneğini saklayıp aralarında tek tıkla geçiş yapabilirsiniz.\n\n## Nasıl kullandım?\n\n1. Window → Layer Comps ile paneli açtım.\n2. Sayfanın ilk hâlini hazırladıktan sonra panelin altındaki \"Create New Layer Comp\" düğmesine bastım ve neleri hatırlayacağını seçtim: Visibility, Position ve Appearance.\n3. Banner'ı ve menüyü değiştirip ikinci bir kompozisyon oluşturdum.\n4. Kompozisyonlar arasında geçiş yaparak hâlleri karşılaştırdım.\n5. Son olarak File → Export → Layer Comps to Files ile her hâli ayrı bir görsel olarak dışa aktardım.\n\n## Neden işe yarıyor?\n\nKatmanları tek tek açıp kapatmakla uğraşmıyorum ve bir seçeneği bozma korkusu olmadan yeni fikirler deniyorum. Hocaya ya da bir müşteriye birden fazla seçenek sunmak da çok kolaylaşıyor. Katmanlara ve gruplara anlaşılır isimler vermek bu yöntemin en önemli yardımcısı oldu.",
+    "en": "In my Graphic Animation I class I designed the homepage interface of a bank website in Photoshop. As the design grew, I needed to show different states of the same page (menu open, menu closed, a different banner). Instead of saving a separate file for each state, I used Layer Comps.\n\n## What are Layer Comps?\n\nA layer comp takes a \"snapshot\" of the current state of your layers. It remembers each layer's visibility, position and layer styles (like shadows or strokes). This lets you keep many design options inside one PSD file and switch between them with a single click.\n\n## How I used it\n\n1. I opened the panel with Window → Layer Comps.\n2. After preparing the first state of the page, I clicked \"Create New Layer Comp\" and chose what it should remember: Visibility, Position and Appearance.\n3. I changed the banner and the menu, then created a second comp.\n4. I switched between the comps to compare the states.\n5. Finally I exported every state as a separate image with File → Export → Layer Comps to Files.\n\n## Why it works\n\nI no longer toggle layers on and off one by one, and I can try new ideas without fear of breaking an option. Presenting several options to a teacher or a client becomes much easier. Giving clear names to layers and groups was the biggest help with this method."
+   }
+  },
+  {
+   "id": "b2",
+   "slug": "image-stack",
+   "static": true,
+   "date": "2026-10-26",
+   "img": "projeler/proje1-sonrasi.jpg",
+   "title": {
+    "tr": "Image Stack ile fotoğraftaki kalabalığı silmek",
+    "en": "Removing crowds from a photo with Image Stack"
+   },
+   "cats": {
+    "tr": [
+     "Fotoğraf Düzenleme",
+     "Grafik Tasarım"
+    ],
+    "en": [
+     "Photo Editing",
+     "Graphic Design"
+    ]
+   },
+   "tags": {
+    "tr": [
+     "Adobe",
+     "Photoshop",
+     "image stack",
+     "median",
+     "fotoğrafçılık"
+    ],
+    "en": [
+     "Adobe",
+     "Photoshop",
+     "image stack",
+     "median",
+     "photography"
+    ]
+   },
+   "excerpt": {
+    "tr": "Kalabalık bir tramvay durağını, birkaç fotoğraf ve Photoshop'un Median yığın moduyla bomboş gösterdim.",
+    "en": "I made a busy tram stop look empty using a few photos and Photoshop's Median stack mode."
+   },
+   "body": {
+    "tr": "Akdeniz Üniversitesi tramvay durağının boş bir fotoğrafını çekmek neredeyse imkânsız; sürekli yolcu ve araç geçiyor. Bu projede, aynı açıdan çektiğim birkaç fotoğrafı Photoshop'ta birleştirerek hareket eden her şeyi kareden sildim.\n\n## Fikir ne?\n\nHer fotoğrafta insanlar farklı yerlerde duruyor ama bina, ray ve zemin hep aynı yerde. Photoshop her pikselin bütün fotoğraflardaki değerlerine bakıp ortanca (median) olanı seçtiğinde, sadece bir iki karede görünen insanlar kayboluyor; geriye sabit olan sahne kalıyor.\n\n## Adımlar\n\n1. Telefonu sabit tutup aynı açıdan, birkaç saniye arayla 8–10 fotoğraf çektim.\n2. File → Scripts → Load Files into Stack ile hepsini tek dosyada katman olarak açtım ve \"Attempt to Automatically Align Source Images\" seçeneğini işaretledim.\n3. Bütün katmanları seçip sağ tık → Convert to Smart Object dedim.\n4. Layer → Smart Objects → Stack Mode → Median yolunu izledim.\n5. Kalan küçük izleri Spot Healing Brush ile temizledim.\n\n## Öğrendiklerim\n\nFotoğraf sayısı ne kadar fazlaysa sonuç o kadar temiz oluyor. Işığın değişmemesi de önemli: bulutlu ve güneşli kareleri karıştırınca görüntüde lekeler oluştu. Aynı yöntem fotoğraftaki gürültüyü azaltmak için de kullanılabiliyor; bu sefer Stack Mode olarak Mean seçmek gerekiyor.",
+    "en": "Taking an empty photo of the Akdeniz University tram stop is almost impossible; passengers and vehicles pass by all the time. In this project I combined several photos taken from the same angle in Photoshop and removed everything that moved.\n\n## The idea\n\nPeople stand in different places in each photo, but the building, the rails and the ground stay in the same place. When Photoshop looks at every pixel across all the photos and picks the middle (median) value, people who appear in only one or two frames disappear and the still scene remains.\n\n## Steps\n\n1. I held my phone still and took 8–10 photos from the same angle, a few seconds apart.\n2. I opened them as layers in one file with File → Scripts → Load Files into Stack and ticked \"Attempt to Automatically Align Source Images\".\n3. I selected all layers and chose right-click → Convert to Smart Object.\n4. I went to Layer → Smart Objects → Stack Mode → Median.\n5. I cleaned up the small leftovers with the Spot Healing Brush.\n\n## What I learned\n\nThe more photos you have, the cleaner the result. Steady light matters too: mixing cloudy and sunny frames left blotches in the image. The same method can also reduce noise in a photo; in that case you choose Mean as the stack mode."
+   }
+  },
+  {
+   "id": "b3",
+   "slug": "yapay-zeka-ile-web-sitesi",
+   "static": true,
+   "date": "2026-11-20",
+   "img": "blog/site.jpg",
+   "title": {
+    "tr": "Yapay zeka ile kişisel web sitemi nasıl yaptım?",
+    "en": "How I built my personal website with AI"
+   },
+   "cats": {
+    "tr": [
+     "Web Tasarım",
+     "Yapay Zeka"
+    ],
+    "en": [
+     "Web Design",
+     "Artificial Intelligence"
+    ]
+   },
+   "tags": {
+    "tr": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "Claude",
+     "Supabase",
+     "GitHub Pages"
+    ],
+    "en": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "Claude",
+     "Supabase",
+     "GitHub Pages"
+    ]
+   },
+   "excerpt": {
+    "tr": "Fikirden yayına: deniz temalı sitemi, yönetim panelini ve asistanı yapay zekayla birlikte nasıl hazırladım?",
+    "en": "From idea to launch: how I built my sea-themed site, admin panel and assistant together with AI."
+   },
+   "body": {
+    "tr": "Bu site, \"kendini tanıtan bir web sitesi\" ödevi için hazırlandı. Hazır bir şablon kullanmak yerine yapay zeka (Claude) ile birlikte çalışarak kendime özel bir tasarım çıkarmak istedim.\n\n## Fikir: Akdeniz'e dalış\n\nİlk denemelerde site fazla sıradan görünüyordu. Akdeniz Üniversitesi'nde okuduğum için konsepti denize bağladım: sayfayı aşağı kaydırmak denize dalmak demek. Kaydırdıkça deniz koyulaşıyor, köşede derinlik ve sıcaklık göstergesi değişiyor, imleçten kaçan balıklar ve yükselen kabarcıklar var. En altta, deniz tabanında iletişim bölümü bulunuyor.\n\n## Kullandığım teknolojiler\n\n1. HTML5 ve CSS3: sayfaların iskeleti, cam görünümlü kartlar, telefona ve tablete uyumlu (responsive) düzen.\n2. JavaScript: canvas ile ışık desenleri ve balıklar, SVG filtresiyle suya batmış başlık efekti.\n3. Supabase: yönetim panelinin veritabanı ve girişi.\n4. GitHub Pages: sitenin ücretsiz olarak yayınlanması.\n\n## Yönetim paneli ve asistan\n\nSiteye bir de kendi içerik yönetim sistemimi (CMS) ekledim. Panelden projeleri, galeriyi, blog yazılarını ve hakkımda yazısını kodla uğraşmadan değiştirebiliyorum. Aynı panelde takvim, görevler, notlar ve \"yarın neyim var?\" gibi Türkçe sorulara cevap veren küçük bir asistan da var.\n\n## Yapay zekayla çalışmak\n\nYapay zeka benim yerime her şeyi yapmadı; ne istediğimi anlatmam, sonuçları denemem ve beğenmediğim yerleri tekrar istemem gerekti. Galeri başlıklarından renklere kadar pek çok karar benimdi. Bu süreçte en çok, bir fikri açık ve adım adım tarif etmeyi öğrendim.",
+    "en": "This site was made for a \"website that introduces yourself\" assignment. Instead of using a ready-made template, I wanted to create my own design by working together with AI (Claude).\n\n## The idea: a dive into the Mediterranean\n\nMy first attempts looked too ordinary. Since I study at Akdeniz (Mediterranean) University, I tied the concept to the sea: scrolling down the page means diving into the sea. As you scroll the water gets darker, a depth and temperature gauge changes in the corner, fish swim away from the cursor and bubbles rise. The contact section sits at the very bottom, on the seabed.\n\n## Technologies I used\n\n1. HTML5 and CSS3: the structure of the pages, glass-like cards and a layout that works on phones and tablets (responsive).\n2. JavaScript: light patterns and fish drawn on canvas, and a half-submerged title made with an SVG filter.\n3. Supabase: the database and login for the admin panel.\n4. GitHub Pages: free hosting for the site.\n\n## Admin panel and assistant\n\nI also added my own content management system (CMS). From the panel I can change projects, the gallery, blog posts and my about text without touching code. The same panel has a calendar, tasks, notes and a small assistant that answers Turkish questions like \"what do I have tomorrow?\".\n\n## Working with AI\n\nAI didn't do everything for me; I had to explain what I wanted, test the results and ask again where I didn't like them. Many decisions, from gallery titles to colours, were mine. Most of all, this process taught me to describe an idea clearly and step by step."
+   }
+  }
  ]
 }

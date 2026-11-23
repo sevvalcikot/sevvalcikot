@@ -11,7 +11,7 @@
   const NAME = 'Şevval';
 
   const TITLES = { today: 'Bugün', calendar: 'Takvim', tasks: 'Görevler', notes: 'Notlar', focus: 'Odak', assistant: 'Asistan',
-    projects: 'Projeler', gallery: 'Galeri', about: 'Hakkımda', skills: 'Yetenekler ve ilgi alanları', quote: 'Sevdiğim söz' };
+    projects: 'Projeler', gallery: 'Galeri', blog: 'Blog yazıları', about: 'Hakkımda', skills: 'Yetenekler ve ilgi alanları', quote: 'Sevdiğim söz' };
   const CATS = { photo: 'Fotoğraf Düzenleme', design: 'Tasarım', web: 'Web Arayüzü' };
   const PRIO = { yuksek: 'Yüksek', orta: 'Orta', dusuk: 'Düşük' };
   const NOTE_COLORS = ['#f1d39a', '#9fe6d8', '#ffc2ad', '#cfc4ff', '#bfe3ff'];
@@ -493,6 +493,53 @@
     bindCmsBar(root, 'gallery');
     $('[data-new]', root).onclick = () => galleryModal();
     bindList(root, 'gallery', draft('gallery'), galleryModal, (g) => g.title.tr);
+  };
+
+  /* BLOG */
+  const slugify = (t) => String(t).toLocaleLowerCase('tr').replace(/[çğıöşü]/g, (c) => ({ ç: 'c', ğ: 'g', ı: 'i', ö: 'o', ş: 's', ü: 'u' }[c]))
+    .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'yazi';
+  const csv = (v) => String(v || '').split(',').map((x) => x.trim()).filter(Boolean);
+  V.blog = () => {
+    const arr = draft('blog') || [];
+    return `${cmsBar('blog', 'Blog yazıları sitede Blog sayfasında ve Anasayfanın altında görünür (en yeni tarih en üstte). Her yazının kategorileri ve etiketleri olmalı.')}
+      <div class="card"><h2>Yazılar <small>${arr.length} yazı</small><button class="btn small primary" data-new>+ Yeni yazı</button></h2>
+      <p class="hint" style="margin-bottom:10px">Yazı metninde: boş satır = yeni paragraf · <code>## Başlık</code> = ara başlık · <code>1. adım</code> satırları = numaralı liste.</p>
+      <div class="cms-list">${arr.map((b, i) => listItem(b.img, b.title.tr, `${b.date} · ${(b.cats?.tr || []).join(', ')} · ${(b.tags?.tr || []).map((t) => '#' + t).join(' ')}`, i, arr.length)).join('') || '<p class="empty">Yazı yok.</p>'}</div></div>`;
+  };
+  const blogModal = (b) => {
+    const arr = draft('blog');
+    const x = b || { id: 'b' + Date.now().toString(36), slug: '', static: false, date: A.ymd(A.today()), img: '',
+      title: { tr: '', en: '' }, excerpt: { tr: '', en: '' }, body: { tr: '', en: '' }, cats: { tr: [], en: [] }, tags: { tr: [], en: [] } };
+    const form = modal(b ? 'Yazıyı düzenle' : 'Yeni blog yazısı', `
+      <div class="form-grid">
+        <div class="two"><label>Başlık (TR)<input type="text" name="ttr" required value="${esc(x.title.tr)}"></label><label>Başlık (EN)<input type="text" name="ten" value="${esc(x.title.en)}"></label></div>
+        <div class="two"><label>Tarih<input type="date" name="date" required value="${esc(x.date)}"></label><span></span></div>
+        <div class="two"><label>Kategoriler (TR, virgülle)<input type="text" name="ctr" required placeholder="Videografi, Animasyon" value="${esc(x.cats.tr.join(', '))}"></label><label>Kategoriler (EN)<input type="text" name="cen" value="${esc(x.cats.en.join(', '))}"></label></div>
+        <div class="two"><label>Etiketler (TR, virgülle)<input type="text" name="gtr" required placeholder="Adobe, Premiere, video kurgu" value="${esc(x.tags.tr.join(', '))}"></label><label>Etiketler (EN)<input type="text" name="gen" value="${esc(x.tags.en.join(', '))}"></label></div>
+        <label>Kısa özet (TR)<textarea name="etr" required>${esc(x.excerpt.tr)}</textarea></label>
+        <label>Kısa özet (EN)<textarea name="een">${esc(x.excerpt.en)}</textarea></label>
+        <label>Yazı (TR)<textarea name="btr" required style="min-height:220px">${esc(x.body.tr)}</textarea></label>
+        <label>Yazı (EN)<textarea name="ben" style="min-height:160px">${esc(x.body.en)}</textarea></label>
+        ${imgPick('img', x.img, 'Kapak görseli')}
+      </div>`, async (fd) => {
+      const ttr = fd.get('ttr').trim(), or = (a, b2) => (a.length ? a : b2);
+      const ctr = csv(fd.get('ctr')), gtr = csv(fd.get('gtr'));
+      Object.assign(x, {
+        title: { tr: ttr, en: fd.get('ten').trim() || ttr }, date: fd.get('date'), img: fd.get('img'),
+        cats: { tr: ctr, en: or(csv(fd.get('cen')), ctr) }, tags: { tr: gtr, en: or(csv(fd.get('gen')), gtr) },
+        excerpt: { tr: fd.get('etr').trim(), en: fd.get('een').trim() || fd.get('etr').trim() },
+        body: { tr: fd.get('btr').trim(), en: fd.get('ben').trim() || fd.get('btr').trim() },
+      });
+      if (!x.slug) { let s = slugify(ttr), n = 2; const base = s; while (arr.some((o) => o !== x && o.slug === s)) s = `${base}-${n++}`; x.slug = s; }
+      if (!b) arr.push(x);
+      markDirty('blog'); render();
+    }, { submit: b ? 'Tamam' : 'Ekle' });
+    bindImgPick(form);
+  };
+  V.blog.bind = (root) => {
+    bindCmsBar(root, 'blog');
+    $('[data-new]', root).onclick = () => blogModal();
+    bindList(root, 'blog', draft('blog'), blogModal, (b) => b.title.tr);
   };
 
   /* HAKKIMDA */

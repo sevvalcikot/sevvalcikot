@@ -1150,3 +1150,53 @@ h1.split.in .ch, .wet.in .ch {
 .sun { background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.09) 0deg 3deg, rgba(255,255,255,0) 3deg 11deg, rgba(255,255,255,.06) 11deg 13deg, rgba(255,255,255,0) 13deg 23deg); filter: blur(6px); }
 .glints { background-size: 263px 171px; opacity: .55; }
 .glints.g2 { background-size: 377px 229px; opacity: .4; }
+
+/* ---------- blog ---------- */
+.blog-grid { display: grid; gap: 18px; }
+@media (min-width: 700px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+.blog-card { display: flex; flex-direction: column; padding: 10px; border-radius: var(--radius); transition: transform .35s var(--ease); }
+.blog-card[hidden] { display: none; }
+.blog-card:hover { transform: translateY(-4px); }
+.blog-link { display: flex; flex-direction: column; flex: 1; color: inherit; text-decoration: none; border-radius: var(--radius-sm); }
+.blog-link:focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; }
+.blog-thumb { display: block; aspect-ratio: 16 / 10; border-radius: var(--radius-sm); overflow: hidden; background: rgba(0, 0, 0, .35); }
+.blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.blog-card:hover .blog-thumb img { transform: scale(1.04); }
+.blog-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 8px 4px; flex: 1; }
+.blog-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--aqua); }
+.blog-title { font-family: var(--serif); font-weight: 400; font-size: 23px; line-height: 1.2; color: var(--text); }
+.blog-excerpt { color: var(--muted); font-size: 15px; }
+.blog-more { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 6px; font-size: 14px; color: var(--text); }
+.blog-more .arrow { width: 14px; height: 14px; transition: transform .3s var(--ease); }
+.blog-card:hover .blog-more .arrow { transform: translateX(4px); }
+.tags, .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.blog-card > .tags { padding: 12px 8px 8px; }
+.tag-chip { font-size: 12px; color: var(--muted); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: rgba(2, 24, 40, .35); }
+.chip { font-size: 13px; color: var(--ink); background: var(--sand); padding: 5px 12px; border-radius: 999px; }
+
+.post { max-width: 820px; }
+.post-head .lead { max-width: 62ch; }
+.post-taxo { display: grid; gap: 12px; margin-top: 22px; }
+.post-taxo > div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.post-taxo dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); min-width: 92px; }
+.post-taxo dd { margin: 0; }
+.post-cover { margin: 8px 0 22px; padding: 10px; border-radius: var(--radius); }
+.post-cover img { width: 100%; max-height: 460px; object-fit: cover; border-radius: var(--radius-sm); }
+.post-body { padding: 26px 22px; border-radius: var(--radius); font-size: 17px; line-height: 1.75; }
+@media (min-width: 700px) { .post-body { padding: 40px 48px; } }
+.post-body h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 3vw, 28px); line-height: 1.2; margin: 30px 0 12px; color: var(--text); }
+.post-body h2:first-child { margin-top: 0; }
+.post-body ol { color: var(--muted); padding-left: 1.3em; margin: 0 0 14px; display: grid; gap: 8px; }
+.post-body li::marker { color: var(--aqua); }
+.post-nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin: 26px 0 10px; }
+.post-body ol { list-style: decimal; }
+.post-body ol li { padding-left: 4px; }
+.post-head { text-align: center; }
+.post-head .lead { margin-inline: auto; }
+.post-taxo { justify-items: center; }
+.post-taxo > div { justify-content: center; }
+.post-taxo dt { min-width: 0; }
+.post-head h1.display { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; max-width: 18ch; margin-inline: auto; }
+.post-cover img { object-fit: contain; background: rgba(0, 0, 0, .3); }
+.post-taxo dt { color: var(--muted); }
