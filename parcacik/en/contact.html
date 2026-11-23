@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Şevval Çikot</title>
+  <meta name="description" content="Get in touch with Şevval Çikot: address, phone, map and contact form.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="tr" href="../iletisim.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menu"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html" aria-current="page">Contact</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Open the universe's code">{ }<span class="code-label">code</span></button>
+          <a href="../iletisim.html" class="chip-btn" hreflang="tr" title="Türkçe'ye geç">TR</a>
+          <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html" aria-current="page">Contact</a></nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section data-shape="text:Hello" data-side="right" class="page-hero wrap">
+      <span class="crumb">Contact</span>
+      <h1 class="display">Something on your mind?<br>Write to me.</h1>
+      <p class="lead">A project, a question or just to say hello.</p>
+    </section>
+
+    <section data-shape="sphere" data-side="center" class="section" style="padding-top:20px">
+      <div class="wrap contact-grid">
+        <div class="glass panel reveal">
+          <h2 class="display">Contact information</h2>
+          <ul class="info-list">
+            <li><span class="k">Address</span><address>Akdeniz University, Vocational School of Technical Sciences, Dumlupınar Blvd., Campus, Konyaaltı / Antalya</address></li>
+            <li><span class="k">Phone</span><a href="tel:+905453133135">0545 313 31 35</a></li>
+            <li><span class="k">Email</span><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a></li>
+            <li><span class="k">Hometown</span><span class="v">Bayburt, Türkiye</span></li>
+          </ul>
+        </div>
+        <div class="glass panel reveal">
+          <h2 class="display">Contact form</h2>
+          
+          <form class="form" action="#" method="post" data-form data-success="Thank you! Your message has been received, I will get back to you soon.">
+            <div class="row">
+              <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+              <div class="field"><label for="f-mail">Email address</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+            </div>
+            <div class="field"><label for="f-subj">Subject</label><input id="f-subj" name="subject" type="text" required></div>
+            <div class="field"><label for="f-msg">Your message</label><textarea id="f-msg" name="message" required></textarea></div>
+            <div><button class="btn btn-light" type="submit" disabled>Send message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+            <p class="form-status" role="status" data-status></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section data-shape="sphere" data-side="center" class="section" style="padding-top:0">
+      <div class="wrap glass panel reveal">
+        <h2 class="display">Location</h2>
+        <div class="map"><iframe src="https://maps.google.com/maps?q=Akdeniz+%C3%9Cniversitesi%2C+Antalya&amp;z=14&amp;output=embed" title="Map of Akdeniz University" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Leave a<br>message.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="contact.html">Write a message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projects.html">See my projects</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Particle universe theme · WebGL with Three.js</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="universe.js — editable code" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>universe.js</span><button type="button" data-code-close aria-label="Close">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="universe.js — editable code"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● live</span><button type="button" data-code-reset>Reset</button></div>
+  </div>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="../assets/js/universe.js"></script>
+</body>
+</html>

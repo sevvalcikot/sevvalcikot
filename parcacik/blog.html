@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot blog: Photoshop, fotoğraf düzenleme, web tasarım ve yapay zeka üzerine yazılar.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="en" href="en/blog.html">
+  <link rel="icon" href="../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menü"><a href="index.html">Anasayfa</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html" aria-current="page">Blog</a><a href="iletisim.html">İletişim</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Evrenin kodunu aç">{ }<span class="code-label">kod</span></button>
+          <a href="en/blog.html" class="chip-btn" hreflang="en" title="Switch to English">EN</a>
+          <button class="menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Anasayfa</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html" aria-current="page">Blog</a><a href="iletisim.html">İletişim</a></nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section data-shape="text:Blog" data-side="right" class="page-hero wrap">
+      <span class="crumb">Blog</span>
+      <h1 class="display">Blog</h1>
+      <p class="lead">Derslerde öğrendiklerimi, denediğim teknikleri ve bu sitenin yapılış hikâyesini yazıyorum.</p>
+    </section>
+
+    <section data-shape="wave" data-side="center" class="section" style="padding-top:20px">
+      <div class="wrap" data-cms="blog-list">
+        <h2 class="display">Yazılar</h2>
+        <div class="filters" role="group" aria-label="Kategoriye göre filtrele" data-bfilters><button type="button" data-bf="all" aria-pressed="true">Tümü</button><button type="button" data-bf="Web Tasarım" aria-pressed="false">Web Tasarım</button><button type="button" data-bf="Yapay Zeka" aria-pressed="false">Yapay Zeka</button><button type="button" data-bf="Fotoğraf Düzenleme" aria-pressed="false">Fotoğraf Düzenleme</button><button type="button" data-bf="Grafik Tasarım" aria-pressed="false">Grafik Tasarım</button><button type="button" data-bf="Web Arayüzü" aria-pressed="false">Web Arayüzü</button></div>
+        <div class="blog-grid"><article class="blog-card glass reveal" data-bcats="Web Tasarım|Yapay Zeka"><a class="blog-link" href="blog-yapay-zeka-ile-web-sitesi.html"><span class="blog-thumb"><img src="../assets/images/blog/site.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-11-20">20 Kasım 2026</time><span>Web Tasarım · Yapay Zeka</span></span><h3 class="blog-title">Yapay zeka ile kişisel web sitemi nasıl yaptım?</h3><span class="blog-excerpt">Fikirden yayına: deniz temalı sitemi, yönetim panelini ve asistanı yapay zekayla birlikte nasıl hazırladım?</span><span class="blog-more">Yazıyı oku <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Etiketler"><li class="tag-chip">#HTML</li><li class="tag-chip">#CSS</li><li class="tag-chip">#JavaScript</li><li class="tag-chip">#Claude</li><li class="tag-chip">#Supabase</li><li class="tag-chip">#GitHub Pages</li></ul></article><article class="blog-card glass reveal" data-bcats="Fotoğraf Düzenleme|Grafik Tasarım"><a class="blog-link" href="blog-image-stack.html"><span class="blog-thumb"><img src="../assets/images/projeler/proje1-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-26">26 Ekim 2026</time><span>Fotoğraf Düzenleme · Grafik Tasarım</span></span><h3 class="blog-title">Image Stack ile fotoğraftaki kalabalığı silmek</h3><span class="blog-excerpt">Kalabalık bir tramvay durağını, birkaç fotoğraf ve Photoshop&#x27;un Median yığın moduyla bomboş gösterdim.</span><span class="blog-more">Yazıyı oku <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Etiketler"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#image stack</li><li class="tag-chip">#median</li><li class="tag-chip">#fotoğrafçılık</li></ul></article><article class="blog-card glass reveal" data-bcats="Grafik Tasarım|Web Arayüzü"><a class="blog-link" href="blog-layer-comps.html"><span class="blog-thumb"><img src="../assets/images/projeler/proje6-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-12">12 Ekim 2026</time><span>Grafik Tasarım · Web Arayüzü</span></span><h3 class="blog-title">Photoshop&#x27;ta Layer Comps (Katman Kompozisyonları) kullanımı</h3><span class="blog-excerpt">Bir web arayüzünün farklı hâllerini tek PSD dosyasında saklamanın en düzenli yolu: Layer Comps.</span><span class="blog-more">Yazıyı oku <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Etiketler"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#layer comps</li><li class="tag-chip">#katmanlar</li><li class="tag-chip">#arayüz tasarımı</li></ul></article></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Bir mesaj<br>bırak.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="iletisim.html">Mesaj yaz <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projeler.html">Projelerime göz at</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Parçacık evreni teması · Three.js ile WebGL</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="evren.js — düzenlenebilir kod" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>evren.js</span><button type="button" data-code-close aria-label="Kapat">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="evren.js — düzenlenebilir kod"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● canlı</span><button type="button" data-code-reset>Sıfırla</button></div>
+  </div>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/blog.js"></script>
+  <script src="../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="assets/js/universe.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot&#x27;s blog: posts about Photoshop, photo editing, web design and AI.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="tr" href="../blog.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menu"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html" aria-current="page">Blog</a><a href="contact.html">Contact</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Open the universe's code">{ }<span class="code-label">code</span></button>
+          <a href="../blog.html" class="chip-btn" hreflang="tr" title="Türkçe'ye geç">TR</a>
+          <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html" aria-current="page">Blog</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section data-shape="text:Blog" data-side="right" class="page-hero wrap">
+      <span class="crumb">Blog</span>
+      <h1 class="display">Blog</h1>
+      <p class="lead">I write about what I learn in class, techniques I try and the story of how this site was made.</p>
+    </section>
+
+    <section data-shape="wave" data-side="center" class="section" style="padding-top:20px">
+      <div class="wrap" data-cms="blog-list">
+        <h2 class="display">Posts</h2>
+        <div class="filters" role="group" aria-label="Filter by category" data-bfilters><button type="button" data-bf="all" aria-pressed="true">All</button><button type="button" data-bf="Web Design" aria-pressed="false">Web Design</button><button type="button" data-bf="Artificial Intelligence" aria-pressed="false">Artificial Intelligence</button><button type="button" data-bf="Photo Editing" aria-pressed="false">Photo Editing</button><button type="button" data-bf="Graphic Design" aria-pressed="false">Graphic Design</button><button type="button" data-bf="Web UI" aria-pressed="false">Web UI</button></div>
+        <div class="blog-grid"><article class="blog-card glass reveal" data-bcats="Web Design|Artificial Intelligence"><a class="blog-link" href="blog-yapay-zeka-ile-web-sitesi.html"><span class="blog-thumb"><img src="../../assets/images/blog/site.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-11-20">November 20, 2026</time><span>Web Design · Artificial Intelligence</span></span><h3 class="blog-title">How I built my personal website with AI</h3><span class="blog-excerpt">From idea to launch: how I built my sea-themed site, admin panel and assistant together with AI.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#HTML</li><li class="tag-chip">#CSS</li><li class="tag-chip">#JavaScript</li><li class="tag-chip">#Claude</li><li class="tag-chip">#Supabase</li><li class="tag-chip">#GitHub Pages</li></ul></article><article class="blog-card glass reveal" data-bcats="Photo Editing|Graphic Design"><a class="blog-link" href="blog-image-stack.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-26">October 26, 2026</time><span>Photo Editing · Graphic Design</span></span><h3 class="blog-title">Removing crowds from a photo with Image Stack</h3><span class="blog-excerpt">I made a busy tram stop look empty using a few photos and Photoshop&#x27;s Median stack mode.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#image stack</li><li class="tag-chip">#median</li><li class="tag-chip">#photography</li></ul></article><article class="blog-card glass reveal" data-bcats="Graphic Design|Web UI"><a class="blog-link" href="blog-layer-comps.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje6-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-12">October 12, 2026</time><span>Graphic Design · Web UI</span></span><h3 class="blog-title">Using Layer Comps in Photoshop</h3><span class="blog-excerpt">The tidiest way to keep several states of a web UI in a single PSD file: Layer Comps.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#layer comps</li><li class="tag-chip">#layers</li><li class="tag-chip">#UI design</li></ul></article></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Leave a<br>message.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="contact.html">Write a message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projects.html">See my projects</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Particle universe theme · WebGL with Three.js</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="universe.js — editable code" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>universe.js</span><button type="button" data-code-close aria-label="Close">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="universe.js — editable code"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● live</span><button type="button" data-code-reset>Reset</button></div>
+  </div>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="../assets/js/universe.js"></script>
+</body>
+</html>

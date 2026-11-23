@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot blog: Photoshop, fotoğraf düzenleme, web tasarım ve yapay zeka üzerine yazılar.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="en" href="en/yazi.html">
+  <link rel="icon" href="../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menü"><a href="index.html">Anasayfa</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Evrenin kodunu aç">{ }<span class="code-label">kod</span></button>
+          <a href="en/yazi.html" class="chip-btn" hreflang="en" title="Switch to English">EN</a>
+          <button class="menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Anasayfa</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="post wrap" data-shape="galaxy" data-side="right" data-cms="blog-post" data-slug="">
+      <header class="page-hero post-head"><span class="crumb">Blog</span><h1 class="display">Blog</h1><p class="lead">Yazı bulunamadı.</p>
+      <p><a class="btn btn-ghost" href="blog.html">← Tüm yazılar</a></p></header>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Bir mesaj<br>bırak.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="iletisim.html">Mesaj yaz <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projeler.html">Projelerime göz at</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Parçacık evreni teması · Three.js ile WebGL</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="evren.js — düzenlenebilir kod" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>evren.js</span><button type="button" data-code-close aria-label="Kapat">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="evren.js — düzenlenebilir kod"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● canlı</span><button type="button" data-code-reset>Sıfırla</button></div>
+  </div>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/blog.js"></script>
+  <script src="../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="assets/js/universe.js"></script>
+</body>
+</html>

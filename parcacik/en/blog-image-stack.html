@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Removing crowds from a photo with Image Stack | Şevval Çikot</title>
+  <meta name="description" content="I made a busy tram stop look empty using a few photos and Photoshop&#x27;s Median stack mode.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="tr" href="../blog-image-stack.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menu"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Open the universe's code">{ }<span class="code-label">code</span></button>
+          <a href="../blog-image-stack.html" class="chip-btn" hreflang="tr" title="Türkçe'ye geç">TR</a>
+          <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="post wrap" data-shape="img:../../assets/images/projeler/proje1-sonrasi.jpg" data-side="right" data-cms="blog-post" data-slug="image-stack">
+      <header class="page-hero post-head"><span class="crumb">Blog · <time datetime="2026-10-26">October 26, 2026</time></span><h1 class="display">Removing crowds from a photo with Image Stack</h1><p class="lead">I made a busy tram stop look empty using a few photos and Photoshop&#x27;s Median stack mode.</p><dl class="post-taxo"><div><dt>Categories</dt><dd><ul class="chips"><li class="chip">Photo Editing</li><li class="chip">Graphic Design</li></ul></dd></div><div><dt>Tags</dt><dd><ul class="tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#image stack</li><li class="tag-chip">#median</li><li class="tag-chip">#photography</li></ul></dd></div></dl></header><figure class="post-cover glass"><img src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="Removing crowds from a photo with Image Stack"></figure><div class="post-body glass prose"><p>Taking an empty photo of the Akdeniz University tram stop is almost impossible; passengers and vehicles pass by all the time. In this project I combined several photos taken from the same angle in Photoshop and removed everything that moved.</p><h2>The idea</h2><p>People stand in different places in each photo, but the building, the rails and the ground stay in the same place. When Photoshop looks at every pixel across all the photos and picks the middle (median) value, people who appear in only one or two frames disappear and the still scene remains.</p><h2>Steps</h2><ol><li>I held my phone still and took 8–10 photos from the same angle, a few seconds apart.</li><li>I opened them as layers in one file with File → Scripts → Load Files into Stack and ticked &quot;Attempt to Automatically Align Source Images&quot;.</li><li>I selected all layers and chose right-click → Convert to Smart Object.</li><li>I went to Layer → Smart Objects → Stack Mode → Median.</li><li>I cleaned up the small leftovers with the Spot Healing Brush.</li></ol><h2>What I learned</h2><p>The more photos you have, the cleaner the result. Steady light matters too: mixing cloudy and sunny frames left blotches in the image. The same method can also reduce noise in a photo; in that case you choose Mean as the stack mode.</p></div><nav class="post-nav" aria-label="Blog"><a class="btn btn-ghost" href="blog.html">← All posts</a><a class="link-more" href="blog-layer-comps.html">Next post: Using Layer Comps in Photoshop <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Leave a<br>message.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="contact.html">Write a message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projects.html">See my projects</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Particle universe theme · WebGL with Three.js</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="universe.js — editable code" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>universe.js</span><button type="button" data-code-close aria-label="Close">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="universe.js — editable code"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● live</span><button type="button" data-code-reset>Reset</button></div>
+  </div>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="../assets/js/universe.js"></script>
+</body>
+</html>

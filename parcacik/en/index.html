@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Şevval Çikot | Personal Website</title>
+  <meta name="description" content="Şevval Çikot: a personal website that dives into the Mediterranean. Scroll and dive in.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="theme-color" content="#05060a">
+  <link rel="alternate" hreflang="tr" href="../index.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas class="universe" aria-hidden="true"></canvas>
+  <div class="hud" data-hud aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="index.html" class="brand"><span class="mono-mark" aria-hidden="true">ŞÇ</span><span class="name">Şevval Çikot</span></a>
+        <nav class="nav-links" aria-label="Menu"><a href="index.html" aria-current="page">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+        <div class="nav-end">
+          <button class="chip-btn" type="button" data-code-btn aria-expanded="false" title="Open the universe's code">{ }<span class="code-label">code</span></button>
+          <a href="../index.html" class="chip-btn" hreflang="tr" title="Türkçe'ye geç">TR</a>
+          <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html" aria-current="page">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" data-shape="img:../../assets/images/vesikalik.jpg" data-side="right">
+      <div class="wrap">
+        <div class="hero-inner">
+          <h1 class="display"><span>Şevval</span><span>Çikot</span></h1>
+          <p class="role">Computer Programming · Akdeniz University</p>
+          <p class="lead">This portrait is made of 16,000 particles of light. Move your cursor over it, click an empty spot, then scroll down: in every section the particles turn into a new shape.</p>
+          <div class="btns">
+            <a class="btn btn-light" href="#kesif">Start exploring <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-ghost" href="projects.html">My projects</a>
+          </div>
+          <p class="hint" aria-hidden="true"><span><b>move</b> to push</span><span><b>click</b> to burst</span><span><b>scroll</b> to morph</span><span><b>{ } code</b> to tweak</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kesif" data-shape="galaxy" data-side="left">
+      <div class="wrap">
+        <div class="col glass panel reveal about-mini">
+          <div><span class="crumb">about</span><h2 class="display">About me, briefly</h2></div>
+          <div class="prose" data-cms="about-short"><p>Hi! I'm <strong>Şevval Çikot</strong>. I have been studying Computer Programming at Akdeniz University since 2025.</p><p>I graduated from Bayburt Rekabet Kurumu Girls' Anatolian High School. My curiosity about technology led me to this field, and I am currently improving myself in artificial intelligence.</p></div>
+          <p><a class="link-more" href="about.html">Read more <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-shape="text:&lt;/&gt;" data-side="right">
+      <div class="wrap">
+        <div class="col">
+          <span class="crumb">what-i-do</span><h2 class="display">Fields I work on</h2>
+          <ul class="cards">
+          <li class="card glass reveal"><span class="num">01</span><h3>Graphic Design</h3><p>Visual and design work with Adobe Photoshop.</p></li>
+          <li class="card glass reveal"><span class="num">02</span><h3>Web Design</h3><p>Learning to build web pages with HTML and CSS.</p></li>
+          <li class="card glass reveal"><span class="num">03</span><h3>Programming</h3><p>Exploring the basics of programming with C#.</p></li>
+          <li class="card glass reveal"><span class="num">04</span><h3>Writing</h3><p>I love putting my thoughts and what I learn into writing.</p></li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-shape="img:../../assets/images/projeler/proje3-sonrasi.jpg" data-side="right">
+      <div class="wrap">
+        <div class="col">
+          <div class="head-row"><div><span class="crumb">projects</span><h2 class="display">Projects</h2></div><a class="link-more" href="projects.html">All projects <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          <p class="lead" style="margin:-8px 0 20px;font-size:16px">Hover over a project and the particles will draw it.</p>
+          <ul class="pindex" data-cms="project-index">
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje1-sonrasi.jpg" data-img="../../assets/images/projeler/proje1-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje1-sonrasi.jpg" data-cap2="After" data-title="Image Stack" data-text="I combined many photos taken from the same angle at the Akdeniz University tram stop using the Image Stack technique, removing moving objects and noise to get a single clean image.">
+            <span class="pnum">01</span><span class="pname">Image Stack</span><span class="pcat">Photo Editing</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje2-sonrasi.jpg" data-img="../../assets/images/projeler/proje2-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje2-sonrasi.jpg" data-cap2="After" data-title="History Brush" data-text="After converting the photo to black and white, I used the History Brush to bring back colour only on the dog and its green vest, making the subject stand out from the background.">
+            <span class="pnum">02</span><span class="pname">History Brush</span><span class="pcat">Photo Editing</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje2-sonrasi.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje3-sonrasi.jpg" data-img="../../assets/images/projeler/proje3-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje3-sonrasi.jpg" data-cap2="After" data-title="Product Promotion" data-text="I cut a phone case out of its background and turned it into a &quot;Three in One Phone Case&quot; product poster using a reflection effect, colour harmony and typography.">
+            <span class="pnum">03</span><span class="pname">Product Promotion</span><span class="pcat">Design</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje3-sonrasi.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje4-sonrasi.jpg" data-img="../../assets/images/projeler/proje4-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje4-sonrasi.jpg" data-cap2="After" data-title="Pencil Sketch Colouring" data-text="I coloured a black-and-white pencil character sketch with layers, blend modes and brushes, turning it into a vivid image that keeps the drawing&#x27;s shading and texture.">
+            <span class="pnum">04</span><span class="pname">Pencil Sketch Colouring</span><span class="pcat">Photo Editing</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje4-sonrasi.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje5.jpg" data-img="../../assets/images/projeler/proje5.jpg" data-cap="Result" data-img2="../../assets/images/projeler/proje5-katmanlar-ss.jpg" data-cap2="Layers" data-title="Smart Object" data-text="I placed star patterns on a pencil case as Smart Objects, so they can be scaled, rotated and edited again without losing quality.">
+            <span class="pnum">05</span><span class="pname">Smart Object</span><span class="pcat">Design</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje5.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button type="button" class="prow" data-lb data-preview="../../assets/images/projeler/proje6-sonrasi.jpg" data-img="../../assets/images/projeler/proje6-sonrasi.jpg" data-cap="Result" data-img2="../../assets/images/projeler/proje6-katmanlar-ss.jpg" data-cap2="Layers" data-title="Web Interface Design" data-text="I recreated the homepage interface of a bank website in Photoshop using layers, groups and Layer Comps.">
+            <span class="pnum">06</span><span class="pname">Web Interface Design</span><span class="pcat">Web UI</span>
+            <img class="pthumb" src="../../assets/images/projeler/proje6-sonrasi.jpg" alt="" loading="lazy"><span class="parr"><svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-shape="img:../../assets/images/galeri/lise.jpg" data-side="center">
+      <div class="wrap">
+        <div class="head-row"><div><span class="crumb">gallery</span><h2 class="display">Photos of the places I studied</h2></div><a class="link-more" href="gallery.html">Go to gallery <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="strip-track" data-cms="strip"><figure class="strip-item"><img src="../../assets/images/galeri/bayburt.jpg" alt="My hometown, Bayburt" style="object-position:center" draggable="false"><figcaption>My hometown, Bayburt</figcaption></figure><figure class="strip-item"><img src="../../assets/images/galeri/ortaokul.jpg" alt="The middle school I attended" style="object-position:center" draggable="false"><figcaption>The middle school I attended</figcaption></figure><figure class="strip-item"><img src="../../assets/images/galeri/lise.jpg" alt="The high school I attended" style="object-position:center" draggable="false"><figcaption>The high school I attended</figcaption></figure><figure class="strip-item"><img src="../../assets/images/galeri/universite.jpg" alt="The university I attend" style="object-position:center 40%" draggable="false"><figcaption>The university I attend</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="section" data-shape="wave" data-side="center">
+      <div class="wrap">
+        <div class="head-row"><div><span class="crumb">blog</span><h2 class="display">Latest from the blog</h2></div><a class="link-more" href="blog.html">All posts <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="blog-grid" data-cms="blog-latest"><article class="blog-card glass reveal" data-bcats="Web Design|Artificial Intelligence"><a class="blog-link" href="blog-yapay-zeka-ile-web-sitesi.html"><span class="blog-thumb"><img src="../../assets/images/blog/site.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-11-20">November 20, 2026</time><span>Web Design · Artificial Intelligence</span></span><h3 class="blog-title">How I built my personal website with AI</h3><span class="blog-excerpt">From idea to launch: how I built my sea-themed site, admin panel and assistant together with AI.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#HTML</li><li class="tag-chip">#CSS</li><li class="tag-chip">#JavaScript</li><li class="tag-chip">#Claude</li><li class="tag-chip">#Supabase</li><li class="tag-chip">#GitHub Pages</li></ul></article><article class="blog-card glass reveal" data-bcats="Photo Editing|Graphic Design"><a class="blog-link" href="blog-image-stack.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-26">October 26, 2026</time><span>Photo Editing · Graphic Design</span></span><h3 class="blog-title">Removing crowds from a photo with Image Stack</h3><span class="blog-excerpt">I made a busy tram stop look empty using a few photos and Photoshop&#x27;s Median stack mode.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#image stack</li><li class="tag-chip">#median</li><li class="tag-chip">#photography</li></ul></article><article class="blog-card glass reveal" data-bcats="Graphic Design|Web UI"><a class="blog-link" href="blog-layer-comps.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje6-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-12">October 12, 2026</time><span>Graphic Design · Web UI</span></span><h3 class="blog-title">Using Layer Comps in Photoshop</h3><span class="blog-excerpt">The tidiest way to keep several states of a web UI in a single PSD file: Layer Comps.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#layer comps</li><li class="tag-chip">#layers</li><li class="tag-chip">#UI design</li></ul></article></div>
+      </div>
+    </section>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" data-lightbox>
+      <button class="lb-close" type="button" aria-label="Close">&times;</button>
+      <div class="lb-box glass">
+        <div class="lb-media">
+          <figure><img src="" alt=""><figcaption></figcaption></figure>
+          <figure hidden><img src="" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="lb-text">
+          <h3 data-lb-title></h3>
+          <p data-lb-text></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="glass panel foot reveal">
+        <h2 class="display">Leave a<br>message.</h2>
+        <div class="btns" style="margin-top:0">
+          <a class="btn btn-light" href="contact.html">Write a message <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="projects.html">See my projects</a>
+        </div>
+        <div class="foot-meta"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      </div>
+      <p class="copy">© 2026 Şevval Çikot · Particle universe theme · WebGL with Three.js</p>
+    </div>
+  </footer>
+
+  <div class="code-drawer" data-code role="dialog" aria-label="universe.js — editable code" hidden>
+    <div class="code-head"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>universe.js</span><button type="button" data-code-close aria-label="Close">×</button></div>
+    <textarea spellcheck="false" autocapitalize="off" aria-label="universe.js — editable code"></textarea>
+    <div class="code-foot"><span data-code-msg role="status">● live</span><button type="button" data-code-reset>Reset</button></div>
+  </div>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js" data-after="main.js"></script>
+  <script type="module" src="../assets/js/universe.js"></script>
+</body>
+</html>
