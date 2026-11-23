@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Şevval Çikot</title>
+  <meta name="description" content="Projects created by Şevval Çikot for the Graphic Animation course.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="home-title" content="Şevval Çikot | Personal Website">
+  <meta name="home-alt" content="../index.html">
+  <meta name="theme-color" content="#9fdcf5">
+  <link rel="alternate" hreflang="tr" href="../projeler.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=5">
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body data-root="../../">
+  <canvas class="room" aria-label="Şevval's Island"></canvas>
+  <div class="loader" aria-hidden="true"><span></span>The island is rising from the sea</div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand"><img src="../../assets/images/avatar.jpg" alt=""><span class="name">Şevval Çikot</span></a>
+      <nav class="nav-links" aria-label="Menu"><a href="index.html">Island</a><a href="about.html">About</a><a href="projects.html" aria-current="page">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+      <div class="nav-end">
+        <button class="pill tour-btn" type="button" data-tour aria-pressed="false" title="Start the tour">▶<span class="tour-label"> Tour the island</span></button>
+        <a href="../projeler.html" class="pill" hreflang="tr" title="Türkçe'ye geç" data-lang-link>TR</a>
+        <button class="pill menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html">Island</a><a href="about.html">About</a><a href="projects.html" aria-current="page">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+  </header>
+
+  <div class="intro card" data-intro hidden>
+      <p class="role">Computer Programming · Akdeniz University</p>
+      <p class="display intro-title">Şevval Çikot</p>
+      <p class="lead">Welcome to my island in the Mediterranean! Drag to turn it and click the buildings: projects in the studio, photos in the exhibition, blog posts in the book tower and my contact details at the lighthouse.</p>
+      <div class="btns">
+        <button class="btn btn-main" type="button" data-tour aria-pressed="false">Tour the island <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="btn btn-ghost" href="about.html">About me</a>
+      </div>
+      <p class="hint" aria-hidden="true"><span><b>drag</b> to rotate</span><span><b>scroll</b> to zoom</span><span><b>click</b> to open</span><span><b>sun, turtle, boat</b> surprises</span></p>
+      <p class="nogl">Your browser doesn't support 3D; use the menu to reach the pages.</p>
+    </div>
+
+  <aside class="sheet" data-sheet aria-label="Page content" aria-hidden="false">
+    <button class="sheet-close" type="button" data-sheet-close aria-label="Back to the island">✕<span> Back to the island</span></button>
+    <main class="sheet-body" data-sheet-body>
+
+    <section class="page-hero wrap">
+      <span class="crumb">Graphic Animation I</span>
+      <h1 class="display" tabindex="-1">Projects</h1>
+      <p class="lead">Work I created with Adobe Photoshop. Tap a project to see its before and after.</p>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">All work</h2>
+        <div class="filters" role="group" aria-label="All work"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="photo" aria-pressed="false">Photo Editing</button><button type="button" data-filter="design" aria-pressed="false">Design</button><button type="button" data-filter="web" aria-pressed="false">Web UI</button></div>
+        <div class="project-grid" data-cms="project-grid">
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../../assets/images/projeler/proje1-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje1-sonrasi.jpg" data-cap2="After" data-title="Image Stack" data-text="I combined many photos taken from the same angle at the Akdeniz University tram stop using the Image Stack technique, removing moving objects and noise to get a single clean image.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="Image Stack" loading="lazy"><span class="tag">Photo Editing</span></span>
+          <span class="project-body"><span class="ptitle">Image Stack</span><span class="pdesc">I combined many photos taken from the same angle at the Akdeniz University tram stop using the Image Stack technique, removing moving objects and noise to get a single clean image.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../../assets/images/projeler/proje2-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje2-sonrasi.jpg" data-cap2="After" data-title="History Brush" data-text="After converting the photo to black and white, I used the History Brush to bring back colour only on the dog and its green vest, making the subject stand out from the background.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje2-sonrasi.jpg" alt="History Brush" loading="lazy"><span class="tag">Photo Editing</span></span>
+          <span class="project-body"><span class="ptitle">History Brush</span><span class="pdesc">After converting the photo to black and white, I used the History Brush to bring back colour only on the dog and its green vest, making the subject stand out from the background.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="design" data-lb data-img="../../assets/images/projeler/proje3-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje3-sonrasi.jpg" data-cap2="After" data-title="Product Promotion" data-text="I cut a phone case out of its background and turned it into a &quot;Three in One Phone Case&quot; product poster using a reflection effect, colour harmony and typography.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje3-sonrasi.jpg" alt="Product Promotion" loading="lazy"><span class="tag">Design</span></span>
+          <span class="project-body"><span class="ptitle">Product Promotion</span><span class="pdesc">I cut a phone case out of its background and turned it into a &quot;Three in One Phone Case&quot; product poster using a reflection effect, colour harmony and typography.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="photo" data-lb data-img="../../assets/images/projeler/proje4-oncesi.jpg" data-cap="Before" data-img2="../../assets/images/projeler/proje4-sonrasi.jpg" data-cap2="After" data-title="Pencil Sketch Colouring" data-text="I coloured a black-and-white pencil character sketch with layers, blend modes and brushes, turning it into a vivid image that keeps the drawing&#x27;s shading and texture.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje4-sonrasi.jpg" alt="Pencil Sketch Colouring" loading="lazy"><span class="tag">Photo Editing</span></span>
+          <span class="project-body"><span class="ptitle">Pencil Sketch Colouring</span><span class="pdesc">I coloured a black-and-white pencil character sketch with layers, blend modes and brushes, turning it into a vivid image that keeps the drawing&#x27;s shading and texture.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="design" data-lb data-img="../../assets/images/projeler/proje5.jpg" data-cap="Result" data-img2="../../assets/images/projeler/proje5-katmanlar-ss.jpg" data-cap2="Layers" data-title="Smart Object" data-text="I placed star patterns on a pencil case as Smart Objects, so they can be scaled, rotated and edited again without losing quality.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje5.jpg" alt="Smart Object" loading="lazy"><span class="tag">Design</span></span>
+          <span class="project-body"><span class="ptitle">Smart Object</span><span class="pdesc">I placed star patterns on a pencil case as Smart Objects, so they can be scaled, rotated and edited again without losing quality.</span></span>
+        </button>
+        <button type="button" class="project-card glass" data-category="web" data-lb data-img="../../assets/images/projeler/proje6-sonrasi.jpg" data-cap="Result" data-img2="../../assets/images/projeler/proje6-katmanlar-ss.jpg" data-cap2="Layers" data-title="Web Interface Design" data-text="I recreated the homepage interface of a bank website in Photoshop using layers, groups and Layer Comps.">
+          <span class="project-thumb"><img src="../../assets/images/projeler/proje6-sonrasi.jpg" alt="Web Interface Design" loading="lazy"><span class="tag">Web UI</span></span>
+          <span class="project-body"><span class="ptitle">Web Interface Design</span><span class="pdesc">I recreated the homepage interface of a bank website in Photoshop using layers, groups and Layer Comps.</span></span>
+        </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" data-lightbox>
+      <button class="lb-close" type="button" aria-label="Close">&times;</button>
+      <div class="lb-box glass">
+        <div class="lb-media">
+          <figure><img src="" alt=""><figcaption></figcaption></figure>
+          <figure hidden><img src="" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="lb-text">
+          <h3 data-lb-title></h3>
+          <p data-lb-text></p>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer class="sheet-foot">
+      <div class="foot-links"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      <p>© 2026 Şevval Çikot · The 3D island is built entirely in code with Three.js</p>
+    </footer>
+  </aside>
+
+  <div class="tip" data-tip hidden></div>
+  <div class="bubble" data-bubble hidden></div>
+  <p class="caption" data-caption hidden></p>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js"></script>
+  <script src="../assets/js/ui.js?v=5"></script>
+  <script type="module" src="../assets/js/island.js?v=5"></script>
+</body>
+</html>
