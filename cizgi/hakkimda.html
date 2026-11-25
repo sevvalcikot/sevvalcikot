@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hakkımda | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot hakkında: özgeçmiş, eğitim, ders programı, ilgi alanları ve yetenekler.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="home-title" content="Şevval Çikot | Kişisel Web Sitesi">
+  <meta name="home-alt" content="en/index.html">
+  <meta name="theme-color" content="#7fd4ff">
+  <link rel="alternate" hreflang="en" href="en/about.html">
+  <link rel="icon" href="../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head>
+<body data-root="../">
+  <canvas class="room" aria-label="Şevval Show"></canvas>
+  <div class="walkpad" aria-label="Sokakta yürü"><button type="button" class="pill" data-walk="-1" aria-label="Geri yürü">◀</button><button type="button" class="pill" data-walk="1" aria-label="İleri yürü">▶</button></div>
+  <div class="episode" data-episode hidden aria-hidden="true"><div class="ep-burst"></div><div class="ep-card"><p data-ep-num></p><p class="ep-title" data-ep-title></p><p class="ep-show">Şevval Show</p></div></div>
+  <div class="loader" aria-hidden="true"><span></span>Bölüm başlıyor</div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand"><img src="../assets/images/avatar.jpg" alt=""><span class="name">Şevval Çikot</span></a>
+      <nav class="nav-links" aria-label="Menü"><a href="index.html">Sokak</a><a href="hakkimda.html" aria-current="page">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+      <div class="nav-end">
+        <button class="pill tour-btn" type="button" data-tour aria-pressed="false" title="Karakterlerle turu başlat">▶<span class="tour-label"> Bölümleri izle</span></button>
+        <button class="pill" type="button" data-mute aria-pressed="true" title="Ses">🔊</button>
+        <a href="en/about.html" class="pill" hreflang="en" title="Switch to English" data-lang-link>EN</a>
+        <button class="pill menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Sokak</a><a href="hakkimda.html" aria-current="page">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+  </header>
+
+  <div class="intro card" data-intro hidden>
+      <p class="role">Şevval Show · Bilgisayar Programcılığı, Akdeniz Üniversitesi</p>
+      <p class="display intro-title">Şevval Çikot</p>
+      <p class="lead">Çizgi film sokağıma hoş geldin! Lapi ve Fırçı sana eşlik edecek. Tekerlekle, sürükleyerek ya da ok tuşlarıyla sokakta yürü; bir binaya tıkla, içeri gir ve yeni bölüm başlasın.</p>
+      <div class="btns">
+        <button class="btn btn-main" type="button" data-tour aria-pressed="false">Bölümleri izle <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="btn btn-ghost" href="hakkimda.html">Hakkımda</a>
+      </div>
+      <p class="hint" aria-hidden="true"><span><b>tekerlek / ← →</b> yürü</span><span><b>binaya tıkla</b> içeri gir</span><span><b>Lapi, güneş, bulut, ağaç</b> sürpriz</span></p>
+      <p class="nogl">Tarayıcın 3D görüntüyü desteklemiyor; sayfalara menüden ulaşabilirsin.</p>
+    </div>
+
+  <aside class="sheet" data-sheet aria-label="Sayfa içeriği" aria-hidden="false">
+    <button class="sheet-close" type="button" data-sheet-close aria-label="Sokağa dön">✕<span> Sokağa dön</span></button>
+    <main class="sheet-body" data-sheet-body>
+
+    <section class="page-hero wrap">
+      <span class="crumb">Hakkımda</span>
+      <h1 class="display" tabindex="-1">Merhaba, ben Şevval.</h1>
+      <p class="lead">Bilgisayar Programcılığı öğrencisiyim; teknolojiye olan merakımı her gün biraz daha büyütüyorum.</p>
+    </section>
+
+    <section class="section">
+      <div class="wrap glass panel about-top">
+        <figure class="id-photo"><img src="../assets/images/vesikalik.jpg" alt="Şevval Çikot"></figure>
+        <div>
+          <h2 class="display">Özgeçmiş</h2>
+          <div class="prose" data-cms="about-long"><p>Merhaba! Ben <strong>Şevval Çikot</strong>. 2025 yılından bu yana Akdeniz Üniversitesi'nde Bilgisayar Programcılığı okuyorum.</p><p>Liseyi Bayburt Rekabet Kurumu Kız Anadolu Lisesi'nde tamamladım. Teknolojiye olan merakım beni bu bölüme yönlendirdi; şu anda yapay zekâ üzerinde kendimi geliştiriyorum.</p><p>Boş zamanlarımda yazı yazmayı, kitap okumayı ve psikoloji üzerine okumalar yapmayı seviyorum. Yüzmek ve badminton oynamak beni dinlendiriyor; film, dizi ve oyunlar ise hem eğlence hem de ilham kaynağım.</p><p>Bu web sitesi, öğrendiklerimi bir araya getirdiğim ve gelişimimi paylaştığım kişisel alanım.</p><p>Web tarafında <abbr title="HyperText Markup Language">HTML</abbr> ve <abbr title="Cascading Style Sheets">CSS</abbr> öğreniyorum; programlama tarafında ise <abbr title="C Sharp">C#</abbr> ile ilk adımlarımı atıyorum.</p></div>
+          <ul class="facts">
+            <li><span>E-posta</span><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a></li>
+            <li><span>Telefon</span><a href="tel:+905453133135">0545 313 31 35</a></li>
+            <li><span>Doğum tarihi</span><time datetime="2005-11-06">6 Kasım 2005</time></li>
+            <li><span>Memleket</span><span>Bayburt, Türkiye</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap glass panel">
+        <h2 class="display">Eğitim</h2>
+        <ol class="timeline">
+            <li><span class="when">2025 — Devam ediyor</span><h3>Akdeniz Üniversitesi – Bilgisayar Programcılığı</h3><p>Ön lisans eğitimimde programlama, web tasarım ve grafik animasyon alanlarında kendimi geliştiriyorum.</p></li>
+            <li><span class="when">2019 — 2023</span><h3>Bayburt Rekabet Kurumu Kız Anadolu Lisesi</h3><p>Lise eğitimimi Bayburt'ta tamamladım.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap glass panel">
+        <h2 class="display">Ders programı</h2>
+        <div class="table-wrap">
+          <table class="schedule">
+            <caption>Akdeniz Üniversitesi · Teknik Bilimler MYO · Bilgisayar Programcılığı · 2026–2027 Güz Dönemi</caption>
+            <thead><tr><th scope="col">Saat</th><th scope="col">Pazartesi</th><th scope="col">Salı</th><th scope="col">Çarşamba</th><th scope="col">Perşembe</th><th scope="col">Cuma</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">08:30 – 09:20</th><td>—</td><td class="has" rowspan="2">Bilgisayar Donanımı<small>MBIL 209 · Derslik 303</small></td><td class="has" rowspan="2">Multimedya Uygulamaları<small>MBIL 213 · Derslik 303</small></td><td class="has" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Lab (L23)</small></td><td class="has" rowspan="4">Nesne Tabanlı Programlama I<small>MBIL 205 · Lab (L23)</small></td></tr>
+              <tr><th scope="row">09:30 – 10:20</th><td>—</td></tr>
+              <tr><th scope="row">10:30 – 11:20</th><td class="has" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Derslik 303</small></td><td class="has" rowspan="2">Yazılım Mimarileri<small>MBIL 207 · Lab (L23)</small></td><td class="has" rowspan="2">İçerik Yönetim Sistemleri<small>MBIL 215 · Derslik 303</small></td><td class="has" rowspan="2">Grafik Animasyon I<small>MBIL 105 · Derslik 303</small></td></tr>
+              <tr><th scope="row">11:30 – 12:20</th></tr>
+              <tr><th scope="row">13:30 – 14:20</th><td class="has" rowspan="2">İnternet Programcılığı I<small>MBIL 203 · Lab (L23)</small></td><td class="has" rowspan="2">Görsel Programlama I<small>MBIL 201 · Derslik 303</small></td><td class="has" rowspan="2">Sistem Analiz ve Tasarımı I<small>MBIL 211 · Lab (L23)</small></td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">14:30 – 15:20</th><td>—</td><td>—</td></tr>
+              <tr><th scope="row">15:30 – 16:20</th><td>—</td><td class="has" rowspan="2">Görsel Programlama I<small>MBIL 201 · Lab (L23)</small></td><td>—</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">16:30 – 17:20</th><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two-col">
+        <div class="glass panel"><h2 class="display">İlgi alanlarım</h2><ul class="list" data-cms="interests"><li>Yazı yazmak</li><li>Psikoloji</li><li>Yüzmek</li><li>Badminton oynamak</li><li>Film ve dizi izlemek</li><li>Kitap okumak</li><li>Oyun oynamak</li></ul></div>
+        <div class="glass panel"><h2 class="display">En güçlü yeteneklerim</h2><ol class="list" data-cms="top-skills"><li>Adobe Photoshop</li><li>HTML</li><li>CSS</li><li>C#</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap glass panel">
+        <h2 class="display">Yeteneklerim</h2>
+        <div class="skills" data-cms="skills">
+          <div class="skill-row">
+            <div class="skill-top"><span>Adobe Photoshop</span><data value="60">%60</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Adobe Photoshop"><i style="--w:60%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>HTML</span><data value="30">%30</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="HTML"><i style="--w:30%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>CSS</span><data value="20">%20</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="CSS"><i style="--w:20%"></i></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span>C#</span><data value="10">%10</data></div>
+            <div class="bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="C#"><i style="--w:10%"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap glass panel">
+        <h2 class="display">Sevdiğim bir söz</h2>
+        <blockquote data-cms="quote"><p>“Ders alınmış başarısızlık, aslında bir başarıdır.”</p><cite>— Edwin Land</cite></blockquote>
+      </div>
+    </section>
+  </main>
+    <footer class="sheet-foot">
+      <div class="foot-links"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../panel.html" rel="nofollow">Panel</a></div>
+      <p>© 2026 Şevval Çikot · Şevval Show: karakterler, çizimler ve sesler kodla sıfırdan üretildi</p>
+    </footer>
+  </aside>
+
+  <div class="tip" data-tip hidden></div>
+  <div class="bubble" data-bubble hidden></div>
+  <p class="caption" data-caption hidden></p>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/blog.js"></script>
+  <script src="../assets/js/cms.js"></script>
+  <script src="assets/js/ui.js?v=7"></script>
+  <script type="module" src="assets/js/street.js?v=7"></script>
+</body>
+</html>

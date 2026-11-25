@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot&#x27;s blog: posts about Photoshop, photo editing, web design and AI.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="home-title" content="Şevval Çikot | Personal Website">
+  <meta name="home-alt" content="../index.html">
+  <meta name="theme-color" content="#7fd4ff">
+  <link rel="alternate" hreflang="tr" href="../blog.html">
+  <link rel="icon" href="../../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=7">
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head>
+<body data-root="../../">
+  <canvas class="room" aria-label="Şevval Show"></canvas>
+  <div class="walkpad" aria-label="Walk the street"><button type="button" class="pill" data-walk="-1" aria-label="Walk back">◀</button><button type="button" class="pill" data-walk="1" aria-label="Walk forward">▶</button></div>
+  <div class="episode" data-episode hidden aria-hidden="true"><div class="ep-burst"></div><div class="ep-card"><p data-ep-num></p><p class="ep-title" data-ep-title></p><p class="ep-show">Şevval Show</p></div></div>
+  <div class="loader" aria-hidden="true"><span></span>The episode is starting</div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand"><img src="../../assets/images/avatar.jpg" alt=""><span class="name">Şevval Çikot</span></a>
+      <nav class="nav-links" aria-label="Menu"><a href="index.html">Street</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html" aria-current="page">Blog</a><a href="contact.html">Contact</a></nav>
+      <div class="nav-end">
+        <button class="pill tour-btn" type="button" data-tour aria-pressed="false" title="Start the tour">▶<span class="tour-label"> Watch the episodes</span></button>
+        <button class="pill" type="button" data-mute aria-pressed="true" title="Sound">🔊</button>
+        <a href="../blog.html" class="pill" hreflang="tr" title="Türkçe'ye geç" data-lang-link>TR</a>
+        <button class="pill menu-btn" type="button" aria-label="Menu" aria-expanded="false" data-menu-btn><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" aria-label="Menu" data-mobile-menu><a href="index.html">Street</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="gallery.html">Gallery</a><a href="blog.html" aria-current="page">Blog</a><a href="contact.html">Contact</a></nav>
+  </header>
+
+  <div class="intro card" data-intro hidden>
+      <p class="role">Şevval Show · Computer Programming, Akdeniz University</p>
+      <p class="display intro-title">Şevval Çikot</p>
+      <p class="lead">Welcome to my cartoon street! Lapi and Fırçı will keep you company. Walk with the wheel, by dragging or with the arrow keys; click a building to step inside and start a new episode.</p>
+      <div class="btns">
+        <button class="btn btn-main" type="button" data-tour aria-pressed="false">Watch the episodes <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="btn btn-ghost" href="about.html">About me</a>
+      </div>
+      <p class="hint" aria-hidden="true"><span><b>wheel / ← →</b> to walk</span><span><b>click a building</b> to enter</span><span><b>Lapi, sun, cloud, tree</b> surprises</span></p>
+      <p class="nogl">Your browser doesn't support 3D; use the menu to reach the pages.</p>
+    </div>
+
+  <aside class="sheet" data-sheet aria-label="Page content" aria-hidden="false">
+    <button class="sheet-close" type="button" data-sheet-close aria-label="Back to the street">✕<span> Back to the street</span></button>
+    <main class="sheet-body" data-sheet-body>
+
+    <section class="page-hero wrap">
+      <span class="crumb">Blog</span>
+      <h1 class="display" tabindex="-1">Blog</h1>
+      <p class="lead">I write about what I learn in class, techniques I try and the story of how this site was made.</p>
+    </section>
+
+    <section class="section">
+      <div class="wrap" data-cms="blog-list">
+        <h2 class="display">Posts</h2>
+        <div class="filters" role="group" aria-label="Filter by category" data-bfilters><button type="button" data-bf="all" aria-pressed="true">All</button><button type="button" data-bf="Web Design" aria-pressed="false">Web Design</button><button type="button" data-bf="Artificial Intelligence" aria-pressed="false">Artificial Intelligence</button><button type="button" data-bf="Photo Editing" aria-pressed="false">Photo Editing</button><button type="button" data-bf="Graphic Design" aria-pressed="false">Graphic Design</button><button type="button" data-bf="Web UI" aria-pressed="false">Web UI</button></div>
+        <div class="blog-grid"><article class="blog-card glass" data-bcats="Web Design|Artificial Intelligence"><a class="blog-link" href="blog-yapay-zeka-ile-web-sitesi.html"><span class="blog-thumb"><img src="../../assets/images/blog/site.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-11-20">November 20, 2026</time><span>Web Design · Artificial Intelligence</span></span><h3 class="blog-title">How I built my personal website with AI</h3><span class="blog-excerpt">From idea to launch: how I built my sea-themed site, admin panel and assistant together with AI.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#HTML</li><li class="tag-chip">#CSS</li><li class="tag-chip">#JavaScript</li><li class="tag-chip">#Claude</li><li class="tag-chip">#Supabase</li><li class="tag-chip">#GitHub Pages</li></ul></article><article class="blog-card glass" data-bcats="Photo Editing|Graphic Design"><a class="blog-link" href="blog-image-stack.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje1-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-26">October 26, 2026</time><span>Photo Editing · Graphic Design</span></span><h3 class="blog-title">Removing crowds from a photo with Image Stack</h3><span class="blog-excerpt">I made a busy tram stop look empty using a few photos and Photoshop&#x27;s Median stack mode.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#image stack</li><li class="tag-chip">#median</li><li class="tag-chip">#photography</li></ul></article><article class="blog-card glass" data-bcats="Graphic Design|Web UI"><a class="blog-link" href="blog-layer-comps.html"><span class="blog-thumb"><img src="../../assets/images/projeler/proje6-sonrasi.jpg" alt="" loading="lazy"></span><span class="blog-body"><span class="blog-meta"><time datetime="2026-10-12">October 12, 2026</time><span>Graphic Design · Web UI</span></span><h3 class="blog-title">Using Layer Comps in Photoshop</h3><span class="blog-excerpt">The tidiest way to keep several states of a web UI in a single PSD file: Layer Comps.</span><span class="blog-more">Read the post <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><ul class="tags" aria-label="Tags"><li class="tag-chip">#Adobe</li><li class="tag-chip">#Photoshop</li><li class="tag-chip">#layer comps</li><li class="tag-chip">#layers</li><li class="tag-chip">#UI design</li></ul></article></div>
+      </div>
+    </section>
+  </main>
+    <footer class="sheet-foot">
+      <div class="foot-links"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../../panel.html" rel="nofollow">Panel</a></div>
+      <p>© 2026 Şevval Çikot · Şevval Show: characters, drawings and sounds made from scratch in code</p>
+    </footer>
+  </aside>
+
+  <div class="tip" data-tip hidden></div>
+  <div class="bubble" data-bubble hidden></div>
+  <p class="caption" data-caption hidden></p>
+
+  <script src="../../assets/js/config.js"></script>
+  <script src="../../assets/js/store.js"></script>
+  <script src="../../assets/js/blog.js"></script>
+  <script src="../../assets/js/cms.js"></script>
+  <script src="../assets/js/ui.js?v=7"></script>
+  <script type="module" src="../assets/js/street.js?v=7"></script>
+</body>
+</html>
