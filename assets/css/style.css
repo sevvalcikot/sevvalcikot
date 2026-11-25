@@ -1200,3 +1200,4 @@ h1.split.in .ch, .wet.in .ch {
 .post-head h1.display { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; max-width: 18ch; margin-inline: auto; }
 .post-cover img { object-fit: contain; background: rgba(0, 0, 0, .3); }
 .post-taxo dt { color: var(--muted); }
+.gallery-item .gdesc { display: block; padding: 10px 6px 2px; font-size: 14px; line-height: 1.5; color: var(--muted); text-align: left; }

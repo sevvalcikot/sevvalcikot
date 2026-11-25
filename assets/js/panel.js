@@ -471,19 +471,21 @@
     const arr = draft('gallery') || [];
     return `${cmsBar('gallery', 'Galeri fotoğrafları. İlk fotoğraflar Anasayfadaki kayan şeritte de görünür.')}
       <div class="card"><h2>Fotoğraflar <small>${arr.length} fotoğraf</small><button class="btn small primary" data-new>+ Fotoğraf ekle</button></h2>
-      <div class="cms-list">${arr.map((g, i) => listItem(g.img, g.title.tr, g.title.en, i, arr.length)).join('') || '<p class="empty">Fotoğraf yok.</p>'}</div></div>`;
+      <div class="cms-list">${arr.map((g, i) => listItem(g.img, g.title.tr, (g.text && g.text.tr) || g.title.en, i, arr.length)).join('') || '<p class="empty">Fotoğraf yok.</p>'}</div></div>`;
   };
   const galleryModal = (g, i) => {
     const arr = draft('gallery');
-    const x = g || { id: 'g' + Date.now().toString(36), img: '', title: { tr: '', en: '' }, pos: 'center' };
+    const x = g || { id: 'g' + Date.now().toString(36), img: '', title: { tr: '', en: '' }, text: { tr: '', en: '' }, pos: 'center' };
+    x.text = x.text || { tr: '', en: '' };
     const form = modal(g ? 'Fotoğrafı düzenle' : 'Fotoğraf ekle', `
       <div class="form-grid">
         ${imgPick('img', x.img, 'Fotoğraf')}
         <div class="two"><label>Başlık (TR)<input type="text" name="ttr" required value="${esc(x.title.tr)}"></label><label>Başlık (EN)<input type="text" name="ten" value="${esc(x.title.en)}"></label></div>
+        <div class="two"><label>Kısa açıklama (TR)<input type="text" name="dtr" value="${esc(x.text.tr)}"></label><label>Kısa açıklama (EN)<input type="text" name="den" value="${esc(x.text.en)}"></label></div>
         <label>Kartta hangi kısım görünsün?<select name="pos">${Object.entries(POS).map(([k, v]) => `<option value="${k}" ${(x.pos || 'center') === k ? 'selected' : ''}>${v}</option>`).join('')}</select></label>
       </div>`, async (fd) => {
       if (!fd.get('img')) throw new Error('Fotoğraf seçmelisin.');
-      Object.assign(x, { img: fd.get('img'), title: { tr: fd.get('ttr').trim(), en: fd.get('ten').trim() || fd.get('ttr').trim() }, pos: fd.get('pos') });
+      Object.assign(x, { img: fd.get('img'), title: { tr: fd.get('ttr').trim(), en: fd.get('ten').trim() || fd.get('ttr').trim() }, pos: fd.get('pos'), text: { tr: fd.get('dtr').trim(), en: fd.get('den').trim() || fd.get('dtr').trim() } });
       if (!g) arr.push(x);
       markDirty('gallery'); render();
     }, { submit: g ? 'Tamam' : 'Ekle' });

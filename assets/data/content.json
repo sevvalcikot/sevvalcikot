@@ -99,7 +99,11 @@
     "tr": "Memleketim Bayburt",
     "en": "My hometown, Bayburt"
    },
-   "pos": "center"
+   "pos": "center",
+   "text": {
+    "tr": "Doğup büyüdüğüm şehir, kışın karlar altında.",
+    "en": "The city where I was born and raised, under winter snow."
+   }
   },
   {
    "id": "g2",
@@ -108,7 +112,11 @@
     "tr": "Okuduğum ortaokul",
     "en": "The middle school I attended"
    },
-   "pos": "center"
+   "pos": "center",
+   "text": {
+    "tr": "Ortaokul yıllarımı geçirdiğim okul.",
+    "en": "The school where I spent my middle school years."
+   }
   },
   {
    "id": "g3",
@@ -117,7 +125,11 @@
     "tr": "Okuduğum lise",
     "en": "The high school I attended"
    },
-   "pos": "center"
+   "pos": "center",
+   "text": {
+    "tr": "2019–2023 yılları arasında Bayburt Rekabet Kurumu Kız Anadolu Lisesi'nde okudum.",
+    "en": "I studied at Bayburt Rekabet Kurumu Girls' Anatolian High School from 2019 to 2023."
+   }
   },
   {
    "id": "g4",
@@ -126,7 +138,11 @@
     "tr": "Okuduğum üniversite",
     "en": "The university I attend"
    },
-   "pos": "center 40%"
+   "pos": "center 40%",
+   "text": {
+    "tr": "2025'ten beri Akdeniz Üniversitesi'nde Bilgisayar Programcılığı okuyorum.",
+    "en": "I have been studying Computer Programming at Akdeniz University since 2025."
+   }
   }
  ],
  "about": {

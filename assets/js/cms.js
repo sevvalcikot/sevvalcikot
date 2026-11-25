@@ -48,8 +48,8 @@
   };
 
   const R = {
-    'about-short': (el, c) => { if (c.about) el.innerHTML = T(c.about).slice(0, 2).map((p) => `<p>${clean(p)}</p>`).join(''); },
-    'about-long': (el, c) => { if (c.about) el.innerHTML = T(c.about).map((p) => `<p>${clean(p)}</p>`).join(''); },
+    'about-short': (el, c) => { if (c.about && T(c.about).length) el.innerHTML = T(c.about).slice(0, 2).map((p) => `<p>${clean(p)}</p>`).join(''); },
+    'about-long': (el, c) => { if (c.about && T(c.about).length) el.innerHTML = T(c.about).map((p) => `<p>${clean(p)}</p>`).join(''); },
     interests: (el, c) => { if (c.interests) el.innerHTML = T(c.interests).map((i) => `<li>${esc(i)}</li>`).join(''); },
     'top-skills': (el, c) => {
       if (c.skills) el.innerHTML = [...c.skills].sort((a, b) => b.value - a.value).map((s) => `<li>${esc(s.name)}</li>`).join('');
@@ -82,8 +82,8 @@
     gallery: (el, c, img) => {
       if (!c.gallery) return;
       el.innerHTML = c.gallery.map((g) => `
-        <button type="button" class="gallery-item reveal" data-lb data-img="${esc(img(g.img))}" data-title="${esc(T(g.title))}" data-text="">
-          <span class="gfig"><img src="${esc(img(g.img))}" alt="${esc(T(g.title))}" style="object-position:${esc(g.pos || 'center')}" loading="lazy"><span class="gcap">${esc(T(g.title))}</span></span>
+        <button type="button" class="gallery-item reveal" data-lb data-img="${esc(img(g.img))}" data-title="${esc(T(g.title))}" data-text="${esc(g.text ? T(g.text) : '')}">
+          <span class="gfig"><img src="${esc(img(g.img))}" alt="${esc(T(g.title))}" style="object-position:${esc(g.pos || 'center')}" loading="lazy"><span class="gcap">${esc(T(g.title))}</span></span>${g.text && T(g.text) ? `<span class="gdesc">${esc(T(g.text))}</span>` : ''}
         </button>`).join('');
     },
     strip: (el, c, img) => {
