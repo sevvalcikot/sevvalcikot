@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Şevval Çikot</title>
+  <meta name="description" content="Şevval Çikot blog: Photoshop, fotoğraf düzenleme, web tasarım ve yapay zeka üzerine yazılar.">
+  <meta name="author" content="Şevval Çikot">
+  <meta name="robots" content="noindex">
+  <meta name="home-title" content="Şevval Çikot | Kişisel Web Sitesi">
+  <meta name="home-alt" content="en/index.html">
+  <meta name="theme-color" content="#7fd4ff">
+  <link rel="alternate" hreflang="en" href="en/yazi.html">
+  <link rel="icon" href="../assets/images/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=1">
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body data-root="../">
+  <canvas class="room" aria-label="Şevval'in Dünyası"></canvas>
+  <div class="film-intro" data-film-intro hidden><div class="bars"></div><p class="fi-1">Bir Şevval Çikot yapımı</p><p class="fi-2">Şevval'in Dünyası</p><p class="fi-skip">geçmek için tıkla</p></div>
+  <div class="walkpad" hidden aria-label="Sokakta yürü"><button type="button" class="pill" data-walk="-1" aria-label="Geri yürü">◀</button><button type="button" class="pill" data-walk="1" aria-label="İleri yürü">▶</button></div>
+  <div class="episode" data-episode hidden aria-hidden="true"><div class="ep-burst"></div><div class="ep-card"><p data-ep-num></p><p class="ep-title" data-ep-title></p><p class="ep-show">Şevval'in Dünyası</p></div></div>
+  <div class="loader" aria-hidden="true"><span></span>Film başlıyor</div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <a href="index.html" class="brand"><img src="../assets/images/avatar.jpg" alt=""><span class="name">Şevval Çikot</span></a>
+      <nav class="nav-links" aria-label="Menü"><a href="index.html">Meydan</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+      <div class="nav-end">
+        <button class="pill tour-btn" type="button" data-tour aria-pressed="false" title="Robi ile turu başlat">▶<span class="tour-label"> Filmi izle</span></button>
+        <button class="pill" type="button" data-night title="Gece / gündüz">🌙</button>
+        <button class="pill" type="button" data-mute aria-pressed="true" title="Ses">🔊</button>
+        <a href="en/yazi.html" class="pill" hreflang="en" title="Switch to English" data-lang-link>EN</a>
+        <button class="pill menu-btn" type="button" aria-label="Menü" aria-expanded="false" data-menu-btn><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" aria-label="Menü" data-mobile-menu><a href="index.html">Meydan</a><a href="hakkimda.html">Hakkımda</a><a href="projeler.html">Projeler</a><a href="galeri.html">Galeri</a><a href="blog.html">Blog</a><a href="iletisim.html">İletişim</a></nav>
+  </header>
+
+  <div class="intro card" data-intro hidden>
+      <p class="role">Bilgisayar Programcılığı · Akdeniz Üniversitesi</p>
+      <p class="display intro-title">Şevval Çikot</p>
+      <p class="lead">Akdeniz kıyısındaki meydanıma hoş geldin! Rehberin Robi. Yere tıkla ya da ok tuşlarıyla onu yürüt; dev ekranlardan birine tıkla, sahne başlasın.</p>
+      <div class="btns">
+        <button class="btn btn-main" type="button" data-tour aria-pressed="false">Filmi izle <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="btn btn-ghost" href="hakkimda.html">Hakkımda</a>
+      </div>
+      <p class="hint" aria-hidden="true"><span><b>yere tıkla / ← ↑ → ↓</b> yürü</span><span><b>sürükle</b> kamerayı çevir</span><span><b>ekrana tıkla</b> sahne</span><span><b>Robi'ye tıkla</b> dans</span></p>
+      <p class="nogl">Tarayıcın 3D görüntüyü desteklemiyor; sayfalara menüden ulaşabilirsin.</p>
+    </div>
+
+  <aside class="sheet" data-sheet aria-label="Sayfa içeriği" aria-hidden="false">
+    <button class="sheet-close" type="button" data-sheet-close aria-label="Meydana dön">✕<span> Meydana dön</span></button>
+    <main class="sheet-body" data-sheet-body>
+
+    <article class="post wrap" data-cms="blog-post" data-slug="">
+      <header class="page-hero post-head"><span class="crumb">Blog</span><h1 class="display" tabindex="-1">Blog</h1><p class="lead">Yazı bulunamadı.</p>
+      <p><a class="btn btn-ghost" href="blog.html">← Tüm yazılar</a></p></header>
+    </article>
+  </main>
+    <footer class="sheet-foot">
+      <div class="foot-links"><a href="mailto:cikot.sevval1@gmail.com">cikot.sevval1@gmail.com</a><a href="https://github.com/sevvalcikot" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/%C5%9Fevval-%C3%A7ikot-07ba83387/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/channel/UC0Z-pEGIkcj0hRFYx6c9mZA" target="_blank" rel="noopener">YouTube</a><a href="../panel.html" rel="nofollow">Panel</a></div>
+      <p>© 2026 Şevval Çikot · Robi modeli: Tomás Laulhé (Quaternius), CC0 · Sahne, ışık ve etkileşimler Three.js ile kodlandı</p>
+    </footer>
+  </aside>
+
+  <div class="tip" data-tip hidden></div>
+  <div class="bubble" data-bubble hidden></div>
+  <p class="caption" data-caption hidden></p>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/blog.js"></script>
+  <script src="../assets/js/cms.js"></script>
+  <script src="assets/js/ui.js?v=1"></script>
+  <script type="module" src="assets/js/film.js?v=1"></script>
+</body>
+</html>
