@@ -4,6 +4,12 @@
    bölüm kartı açılır ve sayfa yan panelde gelir. */
 
 import * as THREE from 'three';
+import { Sky } from 'three/addons/objects/Sky.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const doc = document.documentElement;
 const EN = doc.lang === 'en';
@@ -48,19 +54,28 @@ renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.62;
 
 const scene = new THREE.Scene();
-const SKY_D = new THREE.Color('#7fd4ff'), SKY_N = new THREE.Color('#1d1f52');
-scene.background = SKY_D.clone();
-scene.fog = new THREE.Fog(SKY_D.clone(), 40, 110);
+const SKY_D = new THREE.Color('#bcd9ec'), SKY_N = new THREE.Color('#0b1030');
+scene.fog = new THREE.Fog(SKY_D.clone(), 70, 220);
 const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 300);
 
 /* çizgi film gölgelendirmesi: 3 basamaklı ışık */
-const gradTex = (() => { const d = new Uint8Array([90, 170, 255]); const tx = new THREE.DataTexture(d, 3, 1, THREE.RedFormat); tx.needsUpdate = true; tx.magFilter = tx.minFilter = THREE.NearestFilter; return tx; })();
-const toon = (color, o = {}) => new THREE.MeshToonMaterial({ color, gradientMap: gradTex, ...o });
+/* ince doku: sıva, beton, asfalt gibi yüzeylere küçük pürüzler */
+const noiseTex = (base = 236, amp = 26, size = 256, rep = 1) => {
+  const c = document.createElement('canvas'); c.width = c.height = size; const g = c.getContext('2d'), im = g.createImageData(size, size);
+  for (let i = 0; i < size * size; i++) { const v = base + (Math.random() - 0.5) * amp; im.data[i * 4] = im.data[i * 4 + 1] = im.data[i * 4 + 2] = v; im.data[i * 4 + 3] = 255; }
+  g.putImageData(im, 0, 0);
+  const tx = new THREE.CanvasTexture(c); tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(rep, rep); tx.colorSpace = THREE.SRGBColorSpace; return tx;
+};
+const plaster = noiseTex(222, 26, 256, 2);
+const toon = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.62, metalness: 0, envMapIntensity: 0.3, map: o.map === undefined ? plaster : o.map, ...o });
 const outlineMat = new THREE.MeshBasicMaterial({ color: INK, side: THREE.BackSide });
 /* kalın siyah kontur: aynı şeklin biraz büyüğü, ters yüzüyle */
-function ink(mesh, w = 0.06) {
+function ink(mesh) { return mesh; }
+function inkOld(mesh, w = 0.06) {
   const o = new THREE.Mesh(mesh.geometry, outlineMat);
   mesh.geometry.computeBoundingSphere();
   const r = mesh.geometry.boundingSphere.radius || 1;
@@ -70,9 +85,9 @@ function ink(mesh, w = 0.06) {
   return mesh;
 }
 const M = (geo, color, o) => ink(new THREE.Mesh(geo, toon(color, o)));
-const box = (w, h, d, c) => M(new THREE.BoxGeometry(w, h, d), c);
+const box = (w, h, d, c) => M(new RoundedBoxGeometry(w, h, d, 3, Math.min(0.14, Math.min(w, h, d) * 0.22)), c);
 const cyl = (rt, rb, h, c, seg = 20) => M(new THREE.CylinderGeometry(rt, rb, h, seg), c);
-const ball = (r, c, seg = 20) => M(new THREE.SphereGeometry(r, seg, seg), c);
+const ball = (r, c, seg = 24) => M(new THREE.SphereGeometry(r, seg, seg), c);
 const at = (o, x, y, z) => { o.position.set(x, y, z); return o; };
 const shadow = (o) => { o.traverse((c) => { if (c.isMesh && c.material !== outlineMat) { c.castShadow = true; c.receiveShadow = true; } }); return o; };
 const canvasTex = (w, h, draw) => { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 4; return tx; };
@@ -98,20 +113,56 @@ const clickables = [];
 const hot = (o, info) => { o.userData.hot = info; clickables.push(o); return o; };
 
 /* ---------- ışık ---------- */
-const hemi = new THREE.HemisphereLight(0xffffff, 0x88aa77, 1.4); scene.add(hemi);
-const sun = new THREE.DirectionalLight(0xfff2d6, 2.2);
+const hemi = new THREE.HemisphereLight(0xdfefff, 0x6b7f55, 0.55); scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff0dc, 3.6);
 sun.position.set(20, 30, 18); sun.castShadow = true;
-sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
+sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.03; sun.shadow.radius = 4;
 Object.assign(sun.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30, near: 1, far: 90 });
 scene.add(sun, sun.target);
 
+/* fiziksel gökyüzü: güneşin konumuna göre gerçek renkler */
+const sky = new Sky(); sky.scale.setScalar(450); scene.add(sky);
+const su = sky.material.uniforms;
+su.turbidity.value = 5; su.rayleigh.value = 1.4; su.mieCoefficient.value = 0.004; su.mieDirectionalG.value = 0.82;
+const sunDir = new THREE.Vector3();
+const pmrem = new THREE.PMREMGenerator(renderer);
+let envRT = null;
+function setSun(elev, azim) {
+  sunDir.setFromSphericalCoords(1, THREE.MathUtils.degToRad(90 - elev), THREE.MathUtils.degToRad(azim));
+  su.sunPosition.value.copy(sunDir);
+  const envScene = new THREE.Scene(); const sk = new Sky(); sk.scale.setScalar(450); Object.keys(su).forEach((k) => sk.material.uniforms[k].value = su[k].value); envScene.add(sk);
+  if (envRT) envRT.dispose(); envRT = pmrem.fromScene(envScene); scene.environment = envRT.texture;
+}
+setSun(32, 205);
+const stars = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(Array.from({ length: 1500 }, (_, i) => { const k = i % 3, a = Math.random() * Math.PI * 2, e = 0.08 + Math.random() * 1.3; return k === 0 ? Math.cos(a) * 300 * Math.cos(e) : k === 1 ? 300 * Math.sin(e) : Math.sin(a) * 300 * Math.cos(e); }), 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 1.1, sizeAttenuation: true, transparent: true, opacity: 0, fog: false }));
+scene.add(stars);
+
 /* ---------- zemin: yol, kaldırım, çimen ---------- */
 const LEN = 120, X0 = -10;
-const grass = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), toon(0x7ccf6c)); grass.rotation.x = -Math.PI / 2; grass.receiveShadow = true; scene.add(grass);
-const road = new THREE.Mesh(new THREE.PlaneGeometry(LEN + 80, 7), toon(0x575a6b)); road.rotation.x = -Math.PI / 2; at(road, LEN / 2, 0.02, 6); road.receiveShadow = true; scene.add(road);
+const grass = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), toon(0x6fae55, { map: noiseTex(200, 70, 256, 60), roughness: 0.95 })); grass.rotation.x = -Math.PI / 2; grass.receiveShadow = true; scene.add(grass);
+const road = new THREE.Mesh(new THREE.PlaneGeometry(LEN + 80, 7), toon(0x4a4c55, { map: (() => { const tx = noiseTex(170, 90, 256, 1); tx.repeat.set(60, 3.5); return tx; })(), roughness: 0.9 })); road.rotation.x = -Math.PI / 2; at(road, LEN / 2, 0.02, 6); road.receiveShadow = true; scene.add(road);
 for (let x = -30; x < LEN + 40; x += 4) { const d = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.3), new THREE.MeshBasicMaterial({ color: 0xffd36e })); d.rotation.x = -Math.PI / 2; at(d, x, 0.03, 6); scene.add(d); }
-const walk = at(box(LEN + 80, 0.25, 3, 0xd9d4cf), LEN / 2, 0.12, 1.9); walk.receiveShadow = true; scene.add(walk);
-const walk2 = at(box(LEN + 80, 0.25, 2.2, 0xd9d4cf), LEN / 2, 0.12, 10.6); scene.add(walk2);
+const tileTex = (() => { const tx = canvasTex(256, 256, (g, w) => { g.fillStyle = '#d6d1ca'; g.fillRect(0, 0, w, w); g.fillStyle = 'rgba(0,0,0,.05)'; for (let i = 0; i < 900; i++) g.fillRect(Math.random() * w, Math.random() * w, 2, 2); g.strokeStyle = '#a9a39b'; g.lineWidth = 4; g.strokeRect(0, 0, w, w); }); tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set((LEN + 80) / 1.5, 2); return tx; })();
+const walkMat = new THREE.MeshStandardMaterial({ map: tileTex, roughness: 0.85 });
+const walk = at(new THREE.Mesh(new THREE.BoxGeometry(LEN + 80, 0.25, 3), walkMat), LEN / 2, 0.12, 1.9); walk.receiveShadow = true; scene.add(walk);
+const walk2 = at(new THREE.Mesh(new THREE.BoxGeometry(LEN + 80, 0.25, 2.2), walkMat), LEN / 2, 0.12, 10.6); walk2.receiveShadow = true; scene.add(walk2);
+// beyaz kenar çizgileri ve yaya geçidi
+[2.65, 9.35].forEach((z) => { const l = new THREE.Mesh(new THREE.PlaneGeometry(LEN + 80, 0.12), new THREE.MeshStandardMaterial({ color: 0xf2f2f2, roughness: 0.6 })); l.rotation.x = -Math.PI / 2; at(l, LEN / 2, 0.03, z); scene.add(l); });
+[14, 50].forEach((x) => { for (let k = 0; k < 7; k++) { const z = new THREE.Mesh(new THREE.PlaneGeometry(0.6, 6.2), new THREE.MeshStandardMaterial({ color: 0xf4f4f4, roughness: 0.6 })); z.rotation.x = -Math.PI / 2; at(z, x - 2.4 + k * 0.8, 0.035, 6); scene.add(z); } });
+/* çimen öbekleri (binlerce ince yaprak) */
+{
+  const blade = new THREE.ConeGeometry(0.035, 0.42, 3); blade.translate(0, 0.21, 0);
+  const NB = small ? 2500 : 9000, gm = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 });
+  const inst = new THREE.InstancedMesh(blade, gm, NB), m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), col = new THREE.Color();
+  for (let i = 0; i < NB; i++) {
+    const side = Math.random(); const x = -20 + Math.random() * (LEN + 40);
+    const z = side < 0.55 ? 12 + Math.random() * 14 : -0.4 - Math.random() * 0.55 + (Math.random() < 0.3 ? -8 - Math.random() * 10 : 0);
+    e.set((Math.random() - 0.5) * 0.5, Math.random() * 6, (Math.random() - 0.5) * 0.5); q.setFromEuler(e);
+    const sc = 0.7 + Math.random() * 0.9; m4.compose(new THREE.Vector3(x, 0, z), q, new THREE.Vector3(sc, sc * (0.8 + Math.random() * 0.6), sc));
+    inst.setMatrixAt(i, m4); inst.setColorAt(i, col.setHSL(0.27 + Math.random() * 0.06, 0.5, 0.28 + Math.random() * 0.14));
+  }
+  inst.receiveShadow = true; scene.add(inst);
+}
 
 /* ---------- binalar (yolun solunda, z < 0) ---------- */
 const B = [];
@@ -124,8 +175,9 @@ function building(id, x, href, ep, title, lbl, build) {
 const signBoard = (g, txt, bg, y, w = 4.2) => { const s = plane(w, w * 0.27, label(txt, bg)); at(s, 0, y, 2.62); g.add(s); };
 const windowM = [];
 const win = (g, x, y, z, w = 1.2, h = 1.2) => {
-  const m = at(box(w, h, 0.12, 0xbfeaff), x, y, z); g.add(m); windowM.push(m);
-  g.add(at(box(0.08, h, 0.16, INK), x, y, z)); g.add(at(box(w, 0.08, 0.16, INK), x, y, z));
+  const m = at(new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.1), new THREE.MeshPhysicalMaterial({ color: 0x6f9fc0, roughness: 0.05, metalness: 0.3, envMapIntensity: 1.2, clearcoat: 1 })), x, y, z); g.add(m); windowM.push(m);
+  g.add(at(box(w + 0.3, 0.16, 0.35, 0xffffff), x, y - h / 2 - 0.05, z + 0.12));
+  g.add(at(new THREE.Mesh(new THREE.BoxGeometry(0.07, h, 0.16), toon(0xffffff, { map: null })), x, y, z)); g.add(at(new THREE.Mesh(new THREE.BoxGeometry(w, 0.07, 0.16), toon(0xffffff, { map: null })), x, y, z));
 };
 
 // 1) Pembe ev — Hakkımda
@@ -225,12 +277,13 @@ const trees = [];
   at(g, x, 0, -1.4); shadow(g); scene.add(g); trees.push(g);
   hot(g, { label: t('Ağaç · salla', 'Tree · shake it'), action: 'tree' });
 });
-const lamps = [];
+const lamps = [], lampLights = [];
 for (let x = -2; x < LEN; x += 12) {
   const g = new THREE.Group();
   g.add(at(cyl(0.1, 0.12, 4, 0x2b3a67, 8), 0, 2, 0));
   g.add(at(box(0.9, 0.12, 0.12, 0x2b3a67), 0.35, 4, 0));
-  const head = ball(0.32, 0xfff6a8, 12); at(head, 0.75, 3.75, 0); g.add(head); lamps.push(head);
+  const head = ball(0.3, 0xfff6a8, 16); at(head, 0.75, 3.75, 0); g.add(head); lamps.push(head);
+  if (!small && lampLights.length < 6) { const pl = new THREE.PointLight(0xffc977, 0, 12, 1.8); at(pl, 0.75, 3.5, 0); g.add(pl); lampLights.push(pl); }
   at(g, x + 6, 0, 2.8); shadow(g); scene.add(g);
 }
 // karşı taraf: deniz ve tepeler
@@ -241,30 +294,29 @@ const seaBand = new THREE.Mesh(new THREE.PlaneGeometry(400, 60), toon(0x1fb5d5))
 for (let i = 0; i < 60; i++) { const f = ball(0.12, [0xff6f91, 0xffd36e, 0xffffff, 0xb388ff][i % 4], 8); at(f, -8 + (i * 7.3) % 96, 0.15, -0.3 - (i % 5) * 0.35); scene.add(f); }
 
 /* ---------- gökyüzü: surat yapan güneş, bulutlar ---------- */
-const sunSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: canvasTex(512, 512, (g, w) => {
-  g.translate(w / 2, w / 2); g.strokeStyle = '#1d1b2e'; g.lineWidth = 12;
-  for (let i = 0; i < 12; i++) { g.save(); g.rotate(i * Math.PI / 6); g.fillStyle = '#ffb000'; g.beginPath(); g.roundRect(-14, -240, 28, 70, 14); g.fill(); g.stroke(); g.restore(); }
-  g.fillStyle = '#ffd36e'; g.beginPath(); g.arc(0, 0, 150, 0, 7); g.fill(); g.stroke();
-  g.translate(-128, -128); g.drawImage(faceTex(null).image, 0, 0);
-}), transparent: true }));
-sunSprite.scale.set(9, 9, 1); scene.add(sunSprite);
-const moonSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: canvasTex(512, 512, (g, w) => { g.translate(w / 2, w / 2); g.fillStyle = '#fff6d6'; g.strokeStyle = '#1d1b2e'; g.lineWidth = 12; g.beginPath(); g.arc(0, 0, 150, 0, 7); g.fill(); g.stroke(); g.translate(-128, -128); g.drawImage(faceTex(null).image, 0, 0); }), transparent: true }));
-moonSprite.scale.set(7, 7, 1); moonSprite.visible = false; scene.add(moonSprite);
+const glowTex = (inner, outer) => canvasTex(256, 256, (g, w) => { const gr = g.createRadialGradient(w / 2, w / 2, 0, w / 2, w / 2, w / 2); gr.addColorStop(0, inner); gr.addColorStop(0.18, inner); gr.addColorStop(0.3, outer); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, w); });
+const sunSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex('rgba(255,252,235,1)', 'rgba(255,220,150,.35)'), transparent: true, depthWrite: false, fog: false }));
+sunSprite.scale.set(26, 26, 1); scene.add(sunSprite);
+const moonSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex('rgba(250,248,235,1)', 'rgba(180,200,255,.25)'), transparent: true, depthWrite: false, fog: false }));
+moonSprite.scale.set(18, 18, 1); moonSprite.visible = false; scene.add(moonSprite);
 hot(sunSprite, { label: t('Güneş · gece olsun', 'Sun · make it night'), action: 'night' });
 hot(moonSprite, { label: t('Ay · sabah olsun', 'Moon · make it morning'), action: 'night' });
-const cloudTex = canvasTex(512, 300, (g) => {
-  g.fillStyle = '#fff'; g.strokeStyle = '#1d1b2e'; g.lineWidth = 12;
-  g.beginPath(); g.arc(150, 180, 80, Math.PI * 0.5, Math.PI * 1.5); g.arc(250, 110, 95, Math.PI, 0); g.arc(370, 170, 85, Math.PI * 1.5, Math.PI * 0.5); g.closePath(); g.fill(); g.stroke();
-  g.save(); g.translate(256 - 64, 150 - 64); g.scale(0.5, 0.5); g.drawImage(faceTex(null).image, 0, 0); g.restore();
-});
+/* pamuk bulutlar: üst üste binen yumuşak küreler */
+const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, emissive: 0x8899aa, emissiveIntensity: 0.25, map: null });
 const clouds = [];
-for (let i = 0; i < 9; i++) { const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudTex, transparent: true })); c.scale.set(8, 4.7, 1); at(c, -10 + i * 15, 13 + (i % 3) * 2.5, -14 - (i % 2) * 8); scene.add(c); clouds.push(c); hot(c, { label: t('Bulut · yağmur yağdır', 'Cloud · make it rain'), action: 'rain' }); }
+for (let i = 0; i < 10; i++) {
+  const c = new THREE.Group();
+  for (let k = 0; k < 7; k++) { const p = new THREE.Mesh(new THREE.SphereGeometry(1.4 + Math.random() * 1.3, 18, 14), cloudMat); at(p, (k - 3) * 1.5 + Math.random(), Math.random() * 0.9 - (Math.abs(k - 3) * 0.25), Math.random() * 1.2); p.scale.y = 0.75; c.add(p); }
+  at(c, -10 + i * 14, 17 + (i % 3) * 3, -22 - (i % 2) * 12); c.scale.setScalar(0.9 + (i % 3) * 0.25);
+  scene.add(c); clouds.push(c); hot(c, { label: t('Bulut · yağmur yağdır', 'Cloud · make it rain'), action: 'rain' });
+}
 const rainGeo = new THREE.BufferGeometry(), RN = 220, rp = new Float32Array(RN * 3);
 rainGeo.setAttribute('position', new THREE.BufferAttribute(rp, 3));
 const rain = new THREE.Points(rainGeo, new THREE.PointsMaterial({ color: 0x5ec2f2, size: 0.18 })); rain.visible = false; scene.add(rain);
 let rainCloud = null, rainUntil = 0;
 
 /* ---------- karakterler ---------- */
+const plastic = (color) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.35, clearcoat: 0.6, clearcoatRoughness: 0.25, envMapIntensity: 0.45 });
 function makeLapi() {
   const g = new THREE.Group(), body = new THREE.Group(); g.add(body);
   body.add(at(box(1.8, 0.2, 1.2, 0xc9ccd6), 0, 0.95, 0));
@@ -286,6 +338,7 @@ function makeFirci() {
 }
 const lapi = shadow(makeLapi()), firci = shadow(makeFirci());
 lapi.scale.setScalar(0.85); firci.scale.setScalar(0.85);
+[lapi, firci].forEach((ch) => ch.traverse((c) => { if (c.isMesh && c.material && c.material.isMeshStandardMaterial) c.material = plastic(c.material.color.getHex()); }));
 lapi.position.set(3.5, 0, 4.4); firci.position.set(2, 0, 3.4);
 scene.add(lapi, firci);
 hot(lapi, { label: t('Lapi · dürt', 'Lapi · poke'), action: 'joke', who: 'lapi' });
@@ -363,7 +416,7 @@ function resetRain() { const c = rainCloud.position; for (let i = 0; i < RN; i++
 
 /* ---------- gece / gündüz ---------- */
 let night = false;
-function setNight(n) { night = n; doc.classList.toggle('night', n); sunSprite.visible = !n; moonSprite.visible = n; }
+function setNight(n) { night = n; doc.classList.toggle('night', n); sunSprite.visible = !n; moonSprite.visible = n; su.rayleigh.value = n ? 0.2 : 1.4; su.turbidity.value = n ? 0.6 : 5; setSun(n ? -6 : 32, 205); }
 
 /* ---------- bölüm kartı ---------- */
 const card = document.querySelector('[data-episode]');
@@ -411,9 +464,12 @@ async function tour(btn) {
   inside = null; touring = false; window.RoomUI.caption(''); btn && btn.setAttribute('aria-pressed', 'false');
 }
 
+const composer = small ? null : new EffectComposer(renderer);
+let bloom = null;
+if (composer) { composer.addPass(new RenderPass(scene, camera)); bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.25, 0.6, 0.9); composer.addPass(bloom); composer.addPass(new OutputPass()); }
 function resize() {
   const w = innerWidth, h = innerHeight;
-  renderer.setSize(w, h, false);
+  renderer.setSize(w, h, false); if (composer) composer.setSize(w, h);
   camera.aspect = w / h;
   const shift = w >= 980 && sheetOpen ? Math.min(600, w * 0.46) / 2 : 0;
   if (shift) camera.setViewOffset(w, h, shift, 0, w, h); else camera.clearViewOffset();
@@ -440,17 +496,21 @@ function loop() {
   // kamera: içerideyse binanın kapısına yaklaşır ve ona döner
   if (inside) { camPos.set(inside.x, 2.8, 8.6); tgt.set(inside.x, 3.2, -3); }
   else { camPos.set(camX, 2.4 + Math.sin(tm * 8) * Math.min(0.06, speed * 0.01), 8.6); tgt.set(camX + 7 + look * 4, 2.6, -1.5 - Math.abs(look) * 1.5); }
-  camera.position.lerp(camPos, inside ? 0.06 : 0.25);
-  camera.userData.t = (camera.userData.t || tgt.clone()).lerp(tgt, inside ? 0.06 : 0.2);
+  const kp = 1 - Math.exp(-dt * (inside ? 3.2 : 14)), kt = 1 - Math.exp(-dt * (inside ? 3.2 : 11));
+  camera.position.lerp(camPos, kp);
+  camera.userData.t = (camera.userData.t || tgt.clone()).lerp(tgt, kt);
   camera.lookAt(camera.userData.t);
   sun.position.set(camera.position.x + 20, 30, 18); sun.target.position.set(camera.position.x, 0, 0);
-  sunSprite.position.set(camera.position.x + 26, 22, -40); moonSprite.position.copy(sunSprite.position);
+  sky.position.copy(camera.position);
+  sunSprite.position.copy(camera.position).addScaledVector(sunDir, 160); moonSprite.position.copy(camera.position).add(new THREE.Vector3(-60, 70, -120));
+  sun.position.copy(camera.position).addScaledVector(night ? new THREE.Vector3(-0.4, 0.7, 0.5).normalize() : sunDir, 45); sun.target.position.set(camera.position.x, 0, 0);
   // karakterler kameranın önünde yürür
   const walking = speed > 0.4 && !inside;
   [[lapi, 7.5, 4.4, 'lapi'], [firci, 6.0, 3.4, 'firci']].forEach(([c, ahead, z, who], i) => {
     const goal = (inside ? inside.x + (i ? -2.8 : 2.8) : camera.position.x + ahead);
-    c.position.x += (goal - c.position.x) * 0.08;
-    c.position.z += ((inside ? 3.0 : z) - c.position.z) * 0.08;
+    const kc = 1 - Math.exp(-dt * 5);
+    c.position.x += (goal - c.position.x) * kc;
+    c.position.z += ((inside ? 3.0 : z) - c.position.z) * kc;
     const dir = goal - c.position.x;
     c.rotation.y += ((Math.abs(dir) > 0.2 ? (dir > 0 ? Math.PI / 2 : -Math.PI / 2) : 0.4 * (i ? -1 : 1)) - c.rotation.y) * 0.12;
     const u = c.userData, moving = Math.abs(dir) > 0.2 || walking;
@@ -477,14 +537,19 @@ function loop() {
     rainGeo.attributes.position.needsUpdate = true; if (tm > rainUntil) rain.visible = false;
   }
   // gece-gündüz
-  scene.background.lerp(night ? SKY_N : SKY_D, 0.05); scene.fog.color.copy(scene.background);
-  hemi.intensity += ((night ? 0.55 : 1.4) - hemi.intensity) * 0.05;
-  sun.intensity += ((night ? 0.3 : 2.2) - sun.intensity) * 0.05;
+  scene.fog.color.lerp(night ? SKY_N : SKY_D, 0.05);
+  hemi.intensity += ((night ? 0.15 : 0.55) - hemi.intensity) * 0.05;
+  sun.intensity += ((night ? 0.35 : 3.6) - sun.intensity) * 0.05;
+  sun.color.lerp(new THREE.Color(night ? 0x8fa6ff : 0xfff0dc), 0.05);
+  stars.material.opacity += ((night ? 0.95 : 0) - stars.material.opacity) * 0.05;
+  renderer.toneMappingExposure += ((night ? 0.5 : 0.62) - renderer.toneMappingExposure) * 0.05;
+  if (bloom) bloom.strength += ((night ? 0.9 : 0.22) - bloom.strength) * 0.05;
+  lampLights.forEach((l) => (l.intensity += ((night ? 14 : 0) - l.intensity) * 0.08));
   const lampOn = night ? 1 : 0;
   lamps.forEach((l) => { l.material.emissive.setHex(0xffd36e); l.material.emissiveIntensity = lampOn * 1.6; });
   windowM.forEach((w) => { w.material.emissive.setHex(0xffc24a); w.material.emissiveIntensity = lampOn * 0.9; });
   bLib.g.userData.bulb.material.emissive.setHex(0xffe27a); bLib.g.userData.bulb.material.emissiveIntensity = 0.3 + lampOn * 1.4;
-  renderer.render(scene, camera);
+  if (composer) composer.render(); else renderer.render(scene, camera);
 }
 const hr = new Date().getHours(); if (hr >= 19 || hr < 6) setNight(true);
 resize(); camera.position.set(camX, 2.4, 8.6); loop();
