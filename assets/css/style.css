@@ -1201,3 +1201,9 @@ h1.split.in .ch, .wet.in .ch {
 .post-cover img { object-fit: contain; background: rgba(0, 0, 0, .3); }
 .post-taxo dt { color: var(--muted); }
 .gallery-item .gdesc { display: block; padding: 10px 6px 2px; font-size: 14px; line-height: 1.5; color: var(--muted); text-align: left; }
+
+/* tanıtım videosu */
+.video-frame { margin-top: 28px; padding: 10px; border-radius: 22px; overflow: hidden; }
+.video-frame iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 14px; background: #021a28; }
+.video-link { margin-top: 14px; }
+@media (max-width: 600px) { .video-frame { padding: 6px; border-radius: 16px; } .video-frame iframe { border-radius: 11px; } }
